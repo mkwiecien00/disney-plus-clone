@@ -94,7 +94,7 @@ const Details = ({ type }) => {
 
 		videoUrl = trailerVideo
 			? `https://www.youtube.com/watch?v=${trailerVideo.key}`
-			: data.videos && data.videos.length > 0
+			: data.videoResults && data.videoResults.length > 0
 			? `https://www.youtube.com/watch?v=${data.videoResults[0].key}`
 			: null
 	}
