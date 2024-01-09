@@ -31,11 +31,22 @@
 
 This project is an attempt to clone the Disney+ App. It is so far built with React, React Router, Tanstack Query, Vite, styled components, Material UI, Framer Motion, the TMDB API and other third-party libraries such as React Spinners. Moreover, it is fully responsive and follows the mobile-first concept. Please note, that this project is still under development, so any updates will appear gradually.
 
-<img src="./src/assets/screenshots/desktop-view.png"/>
+<!-- DESKTOP SCREENSHOTS -->
+<img src="./src/assets/screenshots/desktop/homepage.png"/>
+
+<img src="./src/assets/screenshots/desktop/details.png"/>
+
+<img src="./src/assets/screenshots/desktop/searchpage.png"/>
+
+<img src="./src/assets/screenshots/desktop/searchquery.png"/>
 
 <img src="./src/assets/screenshots/desktop-view-details.png"/>
 
-<img src="./src/assets/screenshots/mobile-view.png" width="49.5%"/> <img src="./src/assets/screenshots/mobile-view-errorpage.png" width="49.5%"/>
+<!-- MOBILE SCREENSHOTS -->
+
+<img src="./src/assets/screenshots/mobile/homepage.png" width="45%"/> <img src="./src/assets/screenshots/mobile/details.png" width="45%"/>
+
+<img src="./src/assets/screenshots/mobile/searchquery.png" width="45%"/> <img src="./src/assets/screenshots/mobile/errorpage.png" width="45%"/>
 
 https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/4b349cfc-f009-4c9a-a0e9-60061a634daa
 
@@ -47,11 +58,10 @@ https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/9f2178b6-840b-4
 
 This app was created to develop my skills in programming in React and in using a React-related environment.
 
-Currently, the only functional links in the app are links to the Disney+ homepage and to the Movie/Series Details page. When visiting other pages, with the navigation, an error page is displayed thanks to React Router, as the pages' url's are not recognisable.
+The links to the Disney+ homepage, the Movie/Series details page and the search page are currently the only functional links in the app. At the moment, the application offers the user, among other things, the possibility to display real-time data thanks to the connection of the TMDB API database to the application, the display of details for each resource including the trailer video, and the search and display of resources that contain a phrase entered by the user. When visiting other pages, with the navigation, an error page is displayed thanks to React Router, as the pages' url's are not recognisable.
 
 The project is still under development. The functionalities that will be implemented include:
 
-- a Search page, with the ability to search for resources that contain a phrase entered by the user,
 - a My List page, which will store resources chosen by the user to be viewed, with the help of Redux Toolkit
 - a Movies/Series page, with the ability to search for resources of specific genres, e.g. searching only for documentaries
 - user authentication (+login panel and the possibility of logging the user out)
