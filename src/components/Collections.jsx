@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Grid from '@mui/material/Grid'
 
@@ -15,16 +16,16 @@ import collectionVideoFour from '../assets/videos/starwars.mp4'
 import collectionVideoFive from '../assets/videos/national-geographic.mp4'
 import collectionVideoSix from '../assets/videos/star.mp4'
 
-import {MotionContainer} from './UI/MotionContainer'
+import { MotionContainer } from './UI/MotionContainer'
 import ItemContainer from './UI/ItemContainer'
 
 const collectionItems = [
-	{ img: collectionImgOne, video: collectionVideoOne, title: 'Disney collection' },
-	{ img: collectionImgTwo, video: collectionVideoTwo, title: 'Pixar collection' },
-	{ img: collectionImgThree, video: collectionVideoThree, title: 'Marvel collection' },
-	{ img: collectionImgFour, video: collectionVideoFour, title: 'Star Wars collection' },
-	{ img: collectionImgFive, video: collectionVideoFive, title: 'National Geographic collection' },
-	{ img: collectionImgSix, video: collectionVideoSix, title: 'Star collection' },
+	{ img: collectionImgOne, video: collectionVideoOne, title: 'Disney collection', query: 'disney' },
+	{ img: collectionImgTwo, video: collectionVideoTwo, title: 'Pixar collection', query: 'pixar' },
+	{ img: collectionImgThree, video: collectionVideoThree, title: 'Marvel collection', query: 'marvel' },
+	{ img: collectionImgFour, video: collectionVideoFour, title: 'Star Wars collection', query: 'starwars' },
+	{ img: collectionImgFive, video: collectionVideoFive, title: 'National Geographic collection', query: 'nationalgeographic' },
+	{ img: collectionImgSix, video: collectionVideoSix, title: 'Star collection', query: 'star' },
 ]
 
 const Collections = () => {
@@ -34,12 +35,14 @@ const Collections = () => {
 				<Grid container spacing={2} columns={6}>
 					{collectionItems.map((item, index) => (
 						<Grid item key={index} xs={3} md={1}>
-							<StyledItemContainer>
-								<img src={item.img} alt={item.title} loading='lazy' />
-								<video autoPlay loop muted playsInline>
-									<source src={item.video} type='video/mp4' />
-								</video>
-							</StyledItemContainer>
+							<Link to={`/disney-plus-clone/collection/${item.query}`}>
+								<StyledItemContainer>
+									<img src={item.img} alt={item.title} loading='lazy' />
+									<video autoPlay loop muted playsInline>
+										<source src={item.video} type='video/mp4' />
+									</video>
+								</StyledItemContainer>
+							</Link>
 						</Grid>
 					))}
 				</Grid>

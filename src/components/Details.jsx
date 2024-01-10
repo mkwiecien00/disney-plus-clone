@@ -80,7 +80,10 @@ const Details = ({ type }) => {
 			: null
 
 		releaseDate = data.releaseDate ?? 'No release date provided'
-		releaseYear = releaseDate !== 'No release date provided' ? new Date(releaseDate).getFullYear() : 'No release date provided'
+		releaseYear =
+			releaseDate !== 'No release date provided' && releaseDate.trim() !== ''
+				? new Date(releaseDate).getFullYear()
+				: 'No release date provided'
 
 		numberOfSeasons = data.numberOfSeasons ? data.numberOfSeasons : null
 
@@ -126,7 +129,7 @@ const Details = ({ type }) => {
 							</Controls>
 
 							<InfoParagraph>
-								{releaseYear} {numberOfSeasons && `• ${numberOfSeasons} Seasons`} • {genres}
+								{releaseYear} {numberOfSeasons && (numberOfSeasons > 1 ? `• ${numberOfSeasons} Seasons` : '• 1 Season')} • {genres}
 							</InfoParagraph>
 							<DescriptionParagraph>{overview}</DescriptionParagraph>
 

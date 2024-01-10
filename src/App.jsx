@@ -9,6 +9,7 @@ const HomePage = lazy(() => import('./pages/Home'))
 const MovieDetailsPage = lazy(() => import('./pages/MovieDetails'))
 const SeriesDetailsPage = lazy(() => import('./pages/SeriesDetails'))
 const SearchPage = lazy(() => import('./pages/Search'))
+const CollectionResourcesPage = lazy(() => import('./components/CollectionResources.jsx'))
 
 import PreLoader from './components/Layout/PreLoader.jsx'
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
 			{
 				path: 'search',
 				element: <SearchPage />,
+			},
+			{
+				path: 'collection/:id',
+				element: <CollectionResourcesPage />,
 			},
 
 			// { path: '/disney-plus-clone/search', element: },

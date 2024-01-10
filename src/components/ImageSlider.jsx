@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
@@ -12,14 +13,14 @@ import overlayImgTwo from '../assets/images/overlays/imgslide-2-overlay.jpg'
 import overlayImgThree from '../assets/images/overlays/imgslide-3-overlay.jpg'
 import overlayImgFour from '../assets/images/overlays/imgslide-4-overlay.jpg'
 
-import {MotionContainer} from './UI/MotionContainer'
+import { MotionContainer } from './UI/MotionContainer'
 import ItemContainer from './UI/ItemContainer'
 
 const slideImages = [
-	{ img: imgSlideOne, overlay: overlayImgOne, title: 'Home Alone 2: Lost in New York' },
-	{ img: imgSlideTwo, overlay: overlayImgTwo, title: 'Doctor Who: The Giggle' },
-	{ img: imgSlideThree, overlay: overlayImgThree, title: 'Indiana Jones and the Dial of Destiny' },
-	{ img: imgSlideFour, overlay: overlayImgFour, title: 'The Simpsons' },
+	{ img: imgSlideOne, overlay: overlayImgOne, title: 'Home Alone 2: Lost in New York', path: 'movie', id: '772' },
+	{ img: imgSlideTwo, overlay: overlayImgTwo, title: 'Doctor Who: The Giggle', path: 'series', id: '239770' },
+	{ img: imgSlideThree, overlay: overlayImgThree, title: 'The Simpsons', path: 'series', id: '456' },
+	{ img: imgSlideFour, overlay: overlayImgFour, title: 'Indiana Jones and the Dial of Destiny', path: 'movie', id: '335977' },
 ]
 
 const ImageSlider = () => {
@@ -27,7 +28,7 @@ const ImageSlider = () => {
 		<Wrapper>
 			<MotionContainer>
 				<StyledCarousel
-					autoPlay
+					// autoPlay
 					infiniteLoop
 					showArrows={true}
 					showStatus={false}
@@ -39,10 +40,12 @@ const ImageSlider = () => {
 					centerMode={true}
 					centerSlidePercentage={90}>
 					{slideImages.map((image, index) => (
-						<SlideContainer key={index}>
-							<img src={image.img} alt={image.title} loading='lazy' />
-							<OverlayImage overlay={image.overlay} />
-						</SlideContainer>
+						<Link to={`/disney-plus-clone/${image.path}/${image.id}`} key={index}>
+							<SlideContainer key={index}>
+								<img src={image.img} alt={image.title} loading='lazy' />
+								<OverlayImage overlay={image.overlay} />
+							</SlideContainer>
+						</Link>
 					))}
 				</StyledCarousel>
 			</MotionContainer>
