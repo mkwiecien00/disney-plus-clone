@@ -28,7 +28,7 @@ const ImageSlider = () => {
 		<Wrapper>
 			<MotionContainer>
 				<StyledCarousel
-					// autoPlay
+					autoPlay
 					infiniteLoop
 					showArrows={true}
 					showStatus={false}
