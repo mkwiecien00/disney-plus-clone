@@ -42,14 +42,14 @@ const MainNavigation = () => {
 		}
 	}, [location.pathname])
 
-	const [anchorElNav, setAnchorElNav] = useState(null)
+	const [anchorEl, setAnchorEl] = useState(null)
 
 	const handleOpenNavMenu = event => {
-		setAnchorElNav(event.currentTarget)
+		setAnchorEl(event.currentTarget)
 	}
 
 	const handleCloseNavMenu = () => {
-		setAnchorElNav(null)
+		setAnchorEl(null)
 	}
 
 	return (
@@ -70,12 +70,13 @@ const MainNavigation = () => {
 							aria-haspopup='true'
 							onClick={handleOpenNavMenu}
 							color='inherit'>
-							<Hamburger toggled={anchorElNav} size={20} rounded />
+							<Hamburger toggled={anchorEl} toggle={setAnchorEl} size={20} rounded />
 						</MobileMenuBoxIcon>
 
 						<MobileMenu
 							id='menu-appbar'
-							anchorEl={anchorElNav}
+							className={anchorEl ?? 'MuiModal-hidden css-v557qn-MuiModal-root-MuiPopover-root-MuiMenu-root'}
+							anchorEl={anchorEl}
 							anchorOrigin={{
 								vertical: 'bottom',
 								horizontal: 'left',
@@ -85,13 +86,13 @@ const MainNavigation = () => {
 								vertical: 'top',
 								horizontal: 'left',
 							}}
-							open={Boolean(anchorElNav)}
+							open={Boolean(anchorEl)}
 							onClose={handleCloseNavMenu}
 							sx={{
 								display: { xs: 'block', md: 'none' },
 							}}>
 							<AnimatePresence>
-								{anchorElNav && (
+								{anchorEl && (
 									<>
 										{menuItems.map((item, index) => (
 											<MenuItem
