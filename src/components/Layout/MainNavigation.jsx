@@ -75,7 +75,7 @@ const MainNavigation = () => {
 
 						<MobileMenu
 							id='menu-appbar'
-							className={anchorEl ?? 'MuiModal-hidden css-v557qn-MuiModal-root-MuiPopover-root-MuiMenu-root'}
+							className={anchorEl ?? 'MuiModal-hidden css-v557qn-MuiModal-root-MuiPopover-root-MuiMenu-root css-1eaqs5j'}
 							anchorEl={anchorEl}
 							anchorOrigin={{
 								vertical: 'bottom',
