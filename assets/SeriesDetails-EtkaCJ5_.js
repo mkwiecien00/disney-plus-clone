@@ -1,1 +1,0 @@
-import{j as t}from"./index-UgPndEh1.js";import{D as r}from"./Details-Xz7FpUNQ.js";import"./ErrorBlock-8LYDiVg4.js";import"./MotionContainer-l318qU4d.js";import"./useTheme-82KxnptX.js";import"./Error-qoJ0dcs8.js";import"./MainNavigation-t5uC-pvd.js";import"./createSvgIcon-h794sngX.js";const f=()=>t.jsx(r,{type:"tv"});export{f as default};
