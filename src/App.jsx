@@ -53,8 +53,11 @@ const App = () => {
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-		localStorage.removeItem('searchQuery')
-		localStorage.removeItem('selectedCategory')
+		Object.keys(localStorage).forEach(key => {
+			if (key.includes('searchQuery') || key.includes('selectedCategory')) {
+				localStorage.removeItem(key)
+			}
+		})
 
 		const preloading = setTimeout(() => {
 			setIsLoading(false)

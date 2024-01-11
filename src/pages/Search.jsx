@@ -7,13 +7,13 @@ import styled from 'styled-components'
 import { fetchDataFromQuery } from '../util/http'
 
 import Container from '../components/UI/Container'
-import SearchInput from '../components/UI/SearchInput'
 import { OpacityMotionContainer } from '../components/UI/MotionContainer'
+import ItemContainer from '../components/UI/ItemContainer'
+import Grid from '@mui/material/Grid'
+import SearchInput from '../components/UI/SearchInput'
 import Title from '../components/UI/Title'
 import Loader from '../components/UI/Loader'
 import ErrorBlock from '../components/UI/ErrorBlock'
-import Grid from '@mui/material/Grid'
-import ItemContainer from '../components/UI/ItemContainer'
 import UpcomingMovies from '../components/UpcomingMovies'
 
 const SearchPage = () => {

@@ -63,13 +63,13 @@ https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/4836f9be-5af4-4
 
 This app was created to develop my skills in programming in React and in using a React-related environment.
 
-The links to the Disney+ homepage, the Movie/Series details page, and the search page are currently the only functional links in the app. At the moment, the application offers the user, among other things, the possibility to display real-time data thanks to the TMDB API, the display of details for each resource including the trailer video, and the search and display of resources that contain a phrase entered by the user. 
+Currently functional links in the app are links to the Disney+ homepage, Movie/Series Details page, Search page, and the Movies/Series pages.
+At the moment, the application offers the user, among other things, the possibility to display real-time data thanks to the TMDB API, the display of details for each resource including the trailer video, the search and display of resources that contain a phrase entered by the user, and the ability to search for resources of specific genres, e.g. searching only for documentaries.
 When visiting other pages, with the navigation, an error page is displayed thanks to React Router, as the pages' url's are not recognisable.
 
 The project is still under development. The functionalities that will be implemented include:
 
 - a My List page, which will store resources chosen by the user to be viewed, with the help of Redux Toolkit
-- a Movies/Series page, with the ability to search for resources of specific genres, e.g. searching only for documentaries
 - user authentication (+login panel and the possibility of logging the user out)
 - testing
 
