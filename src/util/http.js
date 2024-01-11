@@ -84,6 +84,10 @@ export const fetchDetailsFromId = async ({ signal, detailsId, resourceType }) =>
 			overview: data.overview,
 		}
 
+		if (filteredData.backdrops && filteredData.backdrops.length === 0) {
+			filteredData.backdrops = null
+		}
+
 		return filteredData
 	} catch (error) {
 		console.error('An error occurred while fetching details. Please try again later.')
