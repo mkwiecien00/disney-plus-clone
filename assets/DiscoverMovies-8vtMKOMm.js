@@ -1,1 +1,0 @@
-import{j as o}from"./index-QOWvtG_Y.js";import{D as r}from"./DiscoverResource-SlhhWO95.js";import"./ErrorBlock-7C5u6IGV.js";import"./MotionContainer-oLfOO8hV.js";import"./useTheme-Qvquxazn.js";import"./GridContainer-KOqtLwVe.js";import"./Grid-9JPdVpGd.js";function u(){return o.jsx(r,{type:"movie"})}export{u as default};
