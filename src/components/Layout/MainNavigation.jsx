@@ -130,7 +130,7 @@ const MainNavigation = () => {
 					</DesktopMenuBox>
 
 					<ProfileIconBox>
-						<Avatar alt='Profile Icon' src='https://i.imgur.com/tfnVE8n.png' />
+						<Avatar alt='Profile Icon' src='https://disney-plus-nu.vercel.app/content/media/users/avatar/iara.png' />
 						<LogoutLink to='/'>
 							<LogoutIcon />
 						</LogoutLink>
