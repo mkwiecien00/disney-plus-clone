@@ -211,7 +211,6 @@ const Logo = styled.div`
 		max-height: 250px;
 		min-width: 250px;
 		max-width: 500px;
-		width: 35vw;
 		object-fit: contain;
 	}
 
