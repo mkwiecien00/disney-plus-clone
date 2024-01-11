@@ -7,7 +7,7 @@ const Movies = () => {
 	const { data, isPending, isError } = useQuery({
 		queryKey: ['homepage-data'],
 		queryFn: ({ signal }) => fetchHomePageData({ signal }),
-		staleTime: 10000,
+		staleTime: 20000,
 	})
 
 	return <MovieCarousel data={data} isPending={isPending} isError={isError} />

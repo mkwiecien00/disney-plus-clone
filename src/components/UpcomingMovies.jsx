@@ -10,7 +10,7 @@ import ErrorBlock from './UI/ErrorBlock'
 
 const UpcomingMovies = () => {
 	const { data, isPending, isError } = useQuery({
-		queryKey: ['movie-data'],
+		queryKey: ['homepage-data'],
 		queryFn: ({ signal }) => fetchHomePageData({ signal }),
 		staleTime: 20000,
 	})
