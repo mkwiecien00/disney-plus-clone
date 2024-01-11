@@ -50,7 +50,6 @@ const CollectionResourcesPage = () => {
 	const { data, isPending, isError } = useQuery({
 		queryKey: ['collection-data', params.id],
 		queryFn: ({ signal }) => fetchCollectionResources({ signal, fetchQuery }),
-		staleTime: 10000,
 	})
 
 	return (

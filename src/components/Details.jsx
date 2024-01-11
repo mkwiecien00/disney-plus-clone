@@ -52,7 +52,6 @@ const Details = ({ type }) => {
 	const { data, isPending, isError } = useQuery({
 		queryKey: [`${type}-data`, params.id],
 		queryFn: ({ signal }) => fetchDetailsFromId({ signal, detailsId: params.id, resourceType: type }),
-		staleTime: 10000,
 	})
 
 	let backdropUrl = ''

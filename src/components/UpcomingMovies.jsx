@@ -12,7 +12,6 @@ const UpcomingMovies = () => {
 	const { data, isPending, isError } = useQuery({
 		queryKey: ['homepage-data'],
 		queryFn: ({ signal }) => fetchHomePageData({ signal }),
-		staleTime: 20000,
 	})
 
 	let upcomingMovies = []

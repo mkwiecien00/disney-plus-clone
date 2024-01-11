@@ -41,7 +41,6 @@ const SearchPage = () => {
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ['search-data', apiQuery],
 		queryFn: ({ signal }) => fetchDataFromQuery({ signal, query: apiQuery }),
-		staleTime: 10000,
 		enabled: !isInitial && queryIsValid,
 	})
 

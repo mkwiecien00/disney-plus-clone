@@ -1,6 +1,13 @@
 import { QueryClient } from '@tanstack/react-query'
 
-export const queryClient = new QueryClient()
+export const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 5 * (60 * 1000),
+			gcTime: 10 * (60 * 1000),
+		},
+	},
+})
 
 const BASE_URL = 'https://api.themoviedb.org/3/'
 const API_KEY = '35f3fea26d7c6bea37a8777ddbddbed3'
