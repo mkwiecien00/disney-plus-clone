@@ -1,1 +1,0 @@
-import{j as t}from"./index-SM-Q08Kn.js";import{D as o}from"./Details-fVO6Ucgi.js";import"./ErrorBlock-zGuL1pMR.js";import"./MotionContainer-qLyAY0zv.js";import"./useTheme-ycZ7AxXo.js";import"./Error-jMh0j5f_.js";import"./MainNavigation-aw-PFww-.js";import"./createSvgIcon-oADMOIBX.js";const f=()=>t.jsx(o,{type:"movie"});export{f as default};
