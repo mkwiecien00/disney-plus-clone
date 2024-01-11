@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import { fetchCollectionResources } from '../util/http'
 
 import Container from './UI/Container'
+import GridContainer from './UI/GridContainer'
+import { OpacityMotionContainer } from './UI/MotionContainer'
 import Loader from './UI/Loader'
 import ErrorBlock from './UI/ErrorBlock'
-import CollectionGrid from './UI/CollectionGrid'
-import { OpacityMotionContainer } from './UI/MotionContainer'
 
 const collectionInfo = {
 	disney: {
@@ -58,7 +58,7 @@ const CollectionResourcesPage = () => {
 			{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
 			{data && (
 				<OpacityMotionContainer>
-					<CollectionGrid movies={data} path={mediaType} title={collectionHeader} />
+					<GridContainer movies={data} path={mediaType} title={collectionHeader} />
 				</OpacityMotionContainer>
 			)}
 		</StyledContainer>

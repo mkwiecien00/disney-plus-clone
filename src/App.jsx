@@ -10,6 +10,8 @@ const MovieDetailsPage = lazy(() => import('./pages/MovieDetails'))
 const SeriesDetailsPage = lazy(() => import('./pages/SeriesDetails'))
 const SearchPage = lazy(() => import('./pages/Search'))
 const CollectionResourcesPage = lazy(() => import('./components/CollectionResources.jsx'))
+const DiscoverMoviesPage = lazy(() => import('./pages/DiscoverMovies.jsx'))
+const DiscoverSeriesPage = lazy(() => import('./pages/DiscoveSeries.jsx'))
 
 import PreLoader from './components/Layout/PreLoader.jsx'
 
@@ -36,11 +38,13 @@ const router = createBrowserRouter([
 				path: 'collection/:id',
 				element: <CollectionResourcesPage />,
 			},
-
-			// { path: '/disney-plus-clone/search', element: },
-			// { path: '/disney-plus-clone/mylist', element: },
-			// { path: '/disney-plus-clone/movies', element: },
-			// { path: '/disney-plus-clone/series', element: },
+			{
+				path: 'discover',
+				children: [
+					{ path: 'movies', element: <DiscoverMoviesPage /> },
+					{ path: 'series', element: <DiscoverSeriesPage /> },
+				],
+			},
 		],
 	},
 ])
@@ -50,6 +54,7 @@ const App = () => {
 
 	useEffect(() => {
 		localStorage.removeItem('searchQuery')
+		localStorage.removeItem('selectedCategory')
 
 		const preloading = setTimeout(() => {
 			setIsLoading(false)

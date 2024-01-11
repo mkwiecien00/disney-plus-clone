@@ -6,10 +6,10 @@ import Title from './Title'
 import { Grid } from '@mui/material'
 import ItemContainer from './ItemContainer'
 
-const CollectionGrid = ({ movies, path, title }) => {
+const GridContainer = ({ movies, path, title }) => {
 	return (
 		<>
-			<Title>{title}</Title>
+			{title && <Title>{title}</Title>}
 			<Grid container spacing={2} columns={12} alignItems='center'>
 				{movies.map((movie, index) => (
 					<Grid item key={index} xs={12} sm={4} md={3} lg={2}>
@@ -25,10 +25,10 @@ const CollectionGrid = ({ movies, path, title }) => {
 	)
 }
 
-CollectionGrid.propTypes = {
+GridContainer.propTypes = {
 	movies: PropTypes.array,
 	title: PropTypes.string,
 	path: PropTypes.string,
 }
 
-export default CollectionGrid
+export default GridContainer

@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
 import { fetchHomePageData } from '../util/http'
 
-import CollectionGrid from './UI/CollectionGrid'
 import Container from './UI/Container'
+import GridContainer from './UI/GridContainer'
 import Loader from './UI/Loader'
 import ErrorBlock from './UI/ErrorBlock'
 
@@ -27,7 +27,7 @@ const UpcomingMovies = () => {
 		<StyledContainer>
 			{isPending && <Loader />}
 			{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
-			{data && <CollectionGrid movies={upcomingMovies} title='Explore' path='movie' />}
+			{data && <GridContainer movies={upcomingMovies} title='Explore' path='movie' />}
 		</StyledContainer>
 	)
 }
