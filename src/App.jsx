@@ -11,7 +11,7 @@ const SeriesDetailsPage = lazy(() => import('./pages/SeriesDetails'))
 const SearchPage = lazy(() => import('./pages/Search'))
 const CollectionResourcesPage = lazy(() => import('./components/CollectionResources.jsx'))
 const DiscoverMoviesPage = lazy(() => import('./pages/DiscoverMovies.jsx'))
-const DiscoverSeriesPage = lazy(() => import('./pages/DiscoveSeries.jsx'))
+const DiscoverSeriesPage = lazy(() => import('./pages/DiscoverSeries.jsx'))
 
 import PreLoader from './components/Layout/PreLoader.jsx'
 
