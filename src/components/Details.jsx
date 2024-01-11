@@ -210,11 +210,18 @@ const Logo = styled.div`
 		max-height: 250px;
 		min-width: 250px;
 		max-width: 500px;
-		object-fit: contain;
+		width: 35vw;
 	}
 
 	h1 {
 		font-size: 35px;
+	}
+
+	@media (min-width: 600px) {
+		img {
+			width: 100%;
+			object-fit: contain;
+		}
 	}
 
 	@media (min-width: 1000px) {
