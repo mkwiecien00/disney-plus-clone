@@ -29,7 +29,7 @@
 
 ## About The Project
 
-This project is an attempt to clone the Disney+ App. It is so far built with React, React Router, Tanstack Query, Vite, styled components, Material UI, Framer Motion, the TMDB API and other third-party libraries such as React Spinners. Moreover, it is fully responsive and follows the mobile-first concept. Please note, that this project is still under development, so any updates will appear gradually.
+This project is an attempt to clone the Disney+ App. It is so far built with React, Redux Toolkit, React Router, Tanstack Query, Vite, styled components, Material UI, Framer Motion, Firebase, the TMDB API and other third-party libraries such as React Spinners. Moreover, it is fully responsive and follows the mobile-first concept. Please note, that this project is still under development, so any updates will appear gradually.
 
 <!-- DESKTOP SCREENSHOTS -->
 <img src="./src/assets/screenshots/desktop/homepage.png"/>
@@ -63,13 +63,18 @@ https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/4836f9be-5af4-4
 
 This app was created to develop my skills in programming in React and in using a React-related environment.
 
-Currently functional links in the app are links to the Disney+ homepage, Movie/Series Details page, Search page, and the Movies/Series pages.
-At the moment, the application offers the user, among other things, the possibility to display real-time data thanks to the TMDB API, the display of details for each resource including the trailer video, the search and display of resources that contain a phrase entered by the user, and the ability to search for resources of specific genres, e.g. searching only for documentaries.
+Currently functional links in the app are links to the Disney+ homepage, Movie/Series Details page, Search page, My List page, and the Movies/Series pages.
+
+At the moment, the application offers the user, among other things:
+- the possibility to display real-time data thanks to the TMDB API, 
+- the display of details for each resource including the trailer video, 
+- the search and display of resources that contain a phrase entered by the user, 
+- the possibility to store resources chosen by the user to be viewed, 
+- and the ability to search for resources of specific genres, e.g. searching only for documentaries.
+
 When visiting other pages, with the navigation, an error page is displayed thanks to React Router, as the pages' url's are not recognisable.
 
 The project is still under development. The functionalities that will be implemented include:
-
-- a My List page, which will store resources chosen by the user to be viewed, with the help of Redux Toolkit
 - user authentication (+login panel and the possibility of logging the user out)
 - testing
 
