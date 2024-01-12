@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
+import Title from './Title'
 import Loader from './Loader'
 import ErrorBlock from './ErrorBlock'
 import { MotionContainer } from './MotionContainer'
@@ -58,7 +59,7 @@ const MovieCarousel = ({ data, isPending, isError }) => {
 						data.map(category => {
 							return (
 								<div key={category.category}>
-									<h2>{category.title}</h2>
+									<StyledTitle>{category.title}</StyledTitle>
 									{category.data ? (
 										<StyledCarousel
 											key={category.category}
@@ -100,18 +101,10 @@ export default MovieCarousel
 
 const Wrapper = styled.section`
 	margin: 60px 0 10px;
+`
 
-	h2 {
-		margin: 0 60px 10px;
-		font-weight: bold;
-		font-size: 18px;
-	}
-
-	@media (min-width: 600px) {
-		h2 {
-			font-size: 20px;
-		}
-	}
+const StyledTitle = styled(Title)`
+	margin: 0 60px 10px;
 `
 
 const StyledCarousel = styled(Carousel)`

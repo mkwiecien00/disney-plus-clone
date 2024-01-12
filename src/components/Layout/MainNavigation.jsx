@@ -28,7 +28,7 @@ import disneyAppLogo from '../../assets/images/disney-logo.svg'
 const menuItems = [
 	{ text: 'Home', path: '/disney-plus-clone/', icon: <HomeOutlinedIcon /> },
 	{ text: 'Search', path: '/disney-plus-clone/search', icon: <SearchIcon /> },
-	{ text: 'My List', path: '/disney-plus-clone/watchlist', icon: <PlaylistAddIcon /> },
+	{ text: 'My List', path: '/disney-plus-clone/mylist', icon: <PlaylistAddIcon /> },
 	{ text: 'Movies', path: '/disney-plus-clone/discover/movies', icon: <LocalMoviesOutlinedIcon /> },
 	{ text: 'Series', path: '/disney-plus-clone/discover/series', icon: <MovieFilterOutlinedIcon /> },
 ]

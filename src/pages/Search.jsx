@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
@@ -8,8 +7,7 @@ import { fetchDataFromQuery } from '../util/http'
 
 import Container from '../components/UI/Container'
 import { OpacityMotionContainer } from '../components/UI/MotionContainer'
-import ItemContainer from '../components/UI/ItemContainer'
-import Grid from '@mui/material/Grid'
+import GridContainer from '../components/UI/GridContainer'
 import SearchInput from '../components/UI/SearchInput'
 import Title from '../components/UI/Title'
 import Loader from '../components/UI/Loader'
@@ -60,17 +58,7 @@ const SearchPage = () => {
 							{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
 							{data?.length > 0 ? (
 								<OpacityMotionContainer>
-									<Grid container spacing={2} columns={12} alignItems='center'>
-										{data.map((item, index) => (
-											<Grid item key={index} xs={12} sm={4} md={3} lg={2}>
-												<Link to={`/disney-plus-clone/${item.media_type}/${item.id}`} key={index}>
-													<ItemContainer key={index}>
-														<img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt={item.title || item.name} />
-													</ItemContainer>
-												</Link>
-											</Grid>
-										))}
-									</Grid>
+									<GridContainer movies={data} />
 								</OpacityMotionContainer>
 							) : (
 								!isLoading && <p>No movie or series containing your search term was found.</p>

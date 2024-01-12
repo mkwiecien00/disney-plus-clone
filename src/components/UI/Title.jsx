@@ -9,6 +9,10 @@ const Title = styled.h2`
 	@media (min-width: 600px) {
 		font-size: 20px;
 	}
+
+	@media (min-width: 800px) {
+		font-size: 25px;
+	}
 `
 
 export default Title

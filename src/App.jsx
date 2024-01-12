@@ -2,6 +2,8 @@ import { useState, useEffect, lazy, Suspense } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from './util/http.js'
+import { useSelector, useDispatch } from 'react-redux'
+import { sendWatchListData, fetchWatchListData } from './store/watchlist-actions.js'
 
 const RootLayout = lazy(() => import('./pages/Root'))
 const ErrorPage = lazy(() => import('./pages/Error'))
@@ -12,6 +14,7 @@ const SearchPage = lazy(() => import('./pages/Search'))
 const CollectionResourcesPage = lazy(() => import('./components/CollectionResources.jsx'))
 const DiscoverMoviesPage = lazy(() => import('./pages/DiscoverMovies.jsx'))
 const DiscoverSeriesPage = lazy(() => import('./pages/DiscoverSeries.jsx'))
+const MyListPage = lazy(() => import('./pages/MyList.jsx'))
 
 import PreLoader from './components/Layout/PreLoader.jsx'
 
@@ -45,12 +48,36 @@ const router = createBrowserRouter([
 					{ path: 'series', element: <DiscoverSeriesPage /> },
 				],
 			},
+			{
+				path: 'mylist',
+				element: <MyListPage />,
+			},
 		],
 	},
 ])
 
+let isInitial = true
+
 const App = () => {
 	const [isLoading, setIsLoading] = useState(true)
+
+	const dispatch = useDispatch()
+	const watchlist = useSelector(state => state.watchList)
+
+	useEffect(() => {
+		dispatch(fetchWatchListData())
+	}, [dispatch])
+
+	useEffect(() => {
+		if (isInitial) {
+			isInitial = false
+			return
+		}
+
+		if (watchlist.changed) {
+			dispatch(sendWatchListData(watchlist))
+		}
+	}, [watchlist, dispatch])
 
 	useEffect(() => {
 		Object.keys(localStorage).forEach(key => {

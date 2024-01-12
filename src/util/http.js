@@ -89,6 +89,7 @@ export const fetchDetailsFromId = async ({ signal, detailsId, resourceType }) =>
 			title: data.title || data.name,
 			numberOfSeasons: data.number_of_seasons,
 			overview: data.overview,
+            posterPath: data.poster_path
 		}
 
 		if (filteredData.backdrops && filteredData.backdrops.length === 0) {

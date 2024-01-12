@@ -1,6 +1,6 @@
 import DiscoverResource from '../components/DiscoverResource'
 
-function DiscoverSeriesPage() {
+const DiscoverSeriesPage = () => {
 	return <DiscoverResource type='series' />
 }
 

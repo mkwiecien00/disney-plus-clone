@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { useDispatch, useSelector } from 'react-redux'
+import { watchListActions } from '../store/watchlist-slice'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
@@ -20,6 +22,7 @@ import IconButton from '@mui/material/IconButton'
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded'
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
 import AddRoundedIcon from '@mui/icons-material/AddRounded'
+import DoneRoundedIcon from '@mui/icons-material/DoneRounded'
 
 const Details = ({ type }) => {
 	useEffect(() => {
@@ -32,8 +35,8 @@ const Details = ({ type }) => {
 
 		scrollToTop()
 	}, [])
-	const navigate = useNavigate()
 
+	const navigate = useNavigate()
 	const backToPreviousPageHandler = () => {
 		navigate(-1)
 	}
@@ -49,10 +52,38 @@ const Details = ({ type }) => {
 	}
 
 	const params = useParams()
+	const id = params.id
 	const { data, isPending, isError } = useQuery({
-		queryKey: [`${type}-data`, params.id],
-		queryFn: ({ signal }) => fetchDetailsFromId({ signal, detailsId: params.id, resourceType: type }),
+		queryKey: [`${type}-data`, id],
+		queryFn: ({ signal }) => fetchDetailsFromId({ signal, detailsId: id, resourceType: type }),
 	})
+
+	const dispatch = useDispatch()
+	const watchList = useSelector(state => state.watchList.resources)
+	const isAddedToWatchList = watchList.find(item => item.detailsId === id)
+
+	let resourceType = ''
+
+	if (type === 'movie') {
+		resourceType = 'movie'
+	} else if (type === 'tv') {
+		resourceType = 'series'
+	}
+
+	const addToWatchListHandler = () => {
+		dispatch(
+			watchListActions.addResourceToList({
+				id,
+				type: resourceType,
+				path: data.posterPath,
+				title: data.title,
+			})
+		)
+	}
+
+	const removeFromWatchListHandler = () => {
+		dispatch(watchListActions.removeResourceFromList(id))
+	}
 
 	let backdropUrl = ''
 	let logoUrl = ''
@@ -122,9 +153,16 @@ const Details = ({ type }) => {
 								<StyledButton onClick={videoHandler} className='trailer' variant='outlined' startIcon={<PlayArrowRoundedIcon />}>
 									TRAILER
 								</StyledButton>
-								<StyledIconButton className='add' variant='outlined'>
-									<AddRoundedIcon />
-								</StyledIconButton>
+
+								{isAddedToWatchList ? (
+									<StyledIconButton className='remove' variant='outlined' onClick={removeFromWatchListHandler}>
+										<DoneRoundedIcon />
+									</StyledIconButton>
+								) : (
+									<StyledIconButton className='add' variant='outlined' onClick={addToWatchListHandler}>
+										<AddRoundedIcon />
+									</StyledIconButton>
+								)}
 							</Controls>
 
 							<InfoParagraph>
