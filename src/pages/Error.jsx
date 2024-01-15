@@ -99,7 +99,7 @@ const ErrorTextContainer = styled.div`
 `
 
 const StyledButton = styledMUI(Button)({
-	backgroundColor: '#0080b4',
+	backgroundColor: '#0158e1',
 	fontSize: '10px',
 
 	'@media (min-width: 600px)': {
@@ -115,6 +115,6 @@ const StyledButton = styledMUI(Button)({
 	},
 
 	'&:hover': {
-		backgroundColor: '#00a6cd',
+		backgroundColor: '#0582f0',
 	},
 })

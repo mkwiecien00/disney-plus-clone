@@ -15,6 +15,7 @@ const CollectionResourcesPage = lazy(() => import('./components/CollectionResour
 const DiscoverMoviesPage = lazy(() => import('./pages/DiscoverMovies.jsx'))
 const DiscoverSeriesPage = lazy(() => import('./pages/DiscoverSeries.jsx'))
 const MyListPage = lazy(() => import('./pages/MyList.jsx'))
+const AuthenticationPage = lazy(() => import('./pages/Authentication.jsx'))
 
 import PreLoader from './components/Layout/PreLoader.jsx'
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
 			{
 				path: 'mylist',
 				element: <MyListPage />,
+			},
+			{
+				path: 'auth',
+				element: <AuthenticationPage />,
 			},
 		],
 	},
