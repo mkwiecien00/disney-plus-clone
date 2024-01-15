@@ -100,6 +100,8 @@ const Details = ({ type }) => {
 				? `https://image.tmdb.org/t/p/original${data.backdrops[0].file_path}`
 				: data.backdrops
 				? `https://image.tmdb.org/t/p/original${data.backdrops}`
+				: data.posterPath
+				? `https://image.tmdb.org/t/p/original${data.posterPath}`
 				: null
 
 		const englishLogo = data.logos.find(logo => logo.iso_639_1 === 'en')
@@ -247,17 +249,18 @@ const Logo = styled.div`
 		min-height: 85px;
 		max-height: 250px;
 		min-width: 250px;
-		max-width: 500px;
+		max-width: 450px;
 		width: 35vw;
 	}
 
 	h1 {
 		font-size: 35px;
+		text-align: left;
 	}
 
 	@media (min-width: 600px) {
 		img {
-			width: 100%;
+			width: auto;
 			object-fit: contain;
 		}
 	}
