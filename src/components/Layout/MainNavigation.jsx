@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { motion, AnimatePresence } from 'framer-motion'
+import { auth } from '../../firebase'
+import { signOut } from 'firebase/auth'
+import { userActions } from '../../store/user-slice'
 import { styled as styledMUI } from '@mui/system'
 
 import AppBar from '@mui/material/AppBar'
@@ -34,6 +38,17 @@ const menuItems = [
 ]
 
 const MainNavigation = () => {
+	const navigate = useNavigate()
+	const user = useSelector(state => state.user.user)
+	const dispatch = useDispatch()
+
+	const signoutHandler = () => {
+		dispatch(userActions.signOutUser())
+		signOut(auth)
+
+		navigate('/disney-plus-clone/')
+	}
+
 	const location = useLocation()
 
 	useEffect(() => {
@@ -71,87 +86,97 @@ const MainNavigation = () => {
 	return (
 		<StyledAppBar position='fixed'>
 			<StyledContainer>
-				<Toolbar disableGutters>
+				<StyledToolbar disableGutters>
 					<Link to='/disney-plus-clone/'>
 						<LogoBox component='img' src={disneyAppLogo} alt='Logo of Disney+ App' />
 					</Link>
 
-					<MobileMenuBox
-						sx={{
-							display: { xs: 'flex', md: 'none' },
-						}}>
-						<MobileMenuBoxIcon
-							aria-label='account of current user'
-							aria-controls='menu-appbar'
-							aria-haspopup='true'
-							onClick={handleOpenNavMenu}
-							color='inherit'>
-							<Hamburger toggled={anchorEl} toggle={setAnchorEl} size={20} rounded />
-						</MobileMenuBoxIcon>
+					{user === null ? (
+						<Link to='/disney-plus-clone/auth/signin'>
+							<StyledButton variant='outlined'>GET STARTED</StyledButton>
+						</Link>
+					) : (
+						<>
+							<MobileMenuBox
+								sx={{
+									display: { xs: 'flex', md: 'none' },
+								}}>
+								<MobileMenuBoxIcon
+									aria-label='account of current user'
+									aria-controls='menu-appbar'
+									aria-haspopup='true'
+									onClick={handleOpenNavMenu}
+									color='inherit'>
+									<Hamburger toggled={anchorEl} toggle={setAnchorEl} size={20} rounded />
+								</MobileMenuBoxIcon>
 
-						<MobileMenu
-							id='menu-appbar'
-							className={anchorEl ?? 'MuiModal-hidden css-v557qn-MuiModal-root-MuiPopover-root-MuiMenu-root css-1eaqs5j'}
-							anchorEl={anchorEl}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'left',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'left',
-							}}
-							open={Boolean(anchorEl)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: 'block', md: 'none' },
-							}}>
-							<AnimatePresence>
-								{anchorEl && (
-									<>
-										{menuItems.map((item, index) => (
-											<MenuItem
-												key={index}
-												component={motion.li}
-												initial={{ opacity: 0, x: -5 }}
-												animate={{ opacity: 1, x: 0 }}
-												exit={{ opacity: 0, x: -5 }}
-												transition={{ duration: 0.3, delay: (index + 1.5) * 0.15 }}
-												onClick={() => {
-													handleCloseNavMenu()
-													window.scrollTo({ top: 0, behavior: 'smooth' })
-												}}>
-												<MobileMenuLink component={Link} to={item.path}>
-													{item.icon}
-													<MobileMenuLinkText variant='subtitle'>{item.text}</MobileMenuLinkText>
-												</MobileMenuLink>
-											</MenuItem>
-										))}
-									</>
-								)}
-							</AnimatePresence>
-						</MobileMenu>
-					</MobileMenuBox>
+								<MobileMenu
+									id='menu-appbar'
+									className={anchorEl ?? 'MuiModal-hidden css-v557qn-MuiModal-root-MuiPopover-root-MuiMenu-root css-1eaqs5j'}
+									anchorEl={anchorEl}
+									anchorOrigin={{
+										vertical: 'bottom',
+										horizontal: 'left',
+									}}
+									keepMounted
+									transformOrigin={{
+										vertical: 'top',
+										horizontal: 'left',
+									}}
+									open={Boolean(anchorEl)}
+									onClose={handleCloseNavMenu}
+									sx={{
+										display: { xs: 'block', md: 'none' },
+									}}>
+									<AnimatePresence>
+										{anchorEl && (
+											<>
+												{menuItems.map((item, index) => (
+													<MenuItem
+														key={index}
+														component={motion.li}
+														initial={{ opacity: 0, x: -5 }}
+														animate={{ opacity: 1, x: 0 }}
+														exit={{ opacity: 0, x: -5 }}
+														transition={{ duration: 0.3, delay: (index + 1.5) * 0.15 }}
+														onClick={() => {
+															handleCloseNavMenu()
+															window.scrollTo({ top: 0, behavior: 'smooth' })
+														}}>
+														<MobileMenuLink component={Link} to={item.path}>
+															{item.icon}
+															<MobileMenuLinkText variant='subtitle'>{item.text}</MobileMenuLinkText>
+														</MobileMenuLink>
+													</MenuItem>
+												))}
+											</>
+										)}
+									</AnimatePresence>
+								</MobileMenu>
+							</MobileMenuBox>
 
-					<DesktopMenuBox sx={{ display: { xs: 'none', md: 'flex' } }}>
-						{menuItems.map((item, index) => (
-							<DesktopMenuLink key={index} component={Link} to={item.path} onClick={handleCloseNavMenu}>
-								{item.icon}
-								<DesktopMenuLinkText variant='subtitle'>
-									<span>{item.text}</span>
-								</DesktopMenuLinkText>
-							</DesktopMenuLink>
-						))}
-					</DesktopMenuBox>
+							<DesktopMenuBox sx={{ display: { xs: 'none', md: 'flex' } }}>
+								{menuItems.map((item, index) => (
+									<DesktopMenuLink key={index} component={Link} to={item.path} onClick={handleCloseNavMenu}>
+										{item.icon}
+										<DesktopMenuLinkText variant='subtitle'>
+											<span>{item.text}</span>
+										</DesktopMenuLinkText>
+									</DesktopMenuLink>
+								))}
+							</DesktopMenuBox>
 
-					<ProfileIconBox>
-						<Avatar alt='Profile Icon' src='https://disney-plus-nu.vercel.app/content/media/users/avatar/iara.png' />
-						<LogoutLink to='/'>
-							<LogoutIcon />
-						</LogoutLink>
-					</ProfileIconBox>
-				</Toolbar>
+							<ProfileIconBox>
+								<Avatar alt='Profile Icon' src='https://disney-plus-nu.vercel.app/content/media/users/avatar/iara.png' />
+								<LogoutLink to='/disney-plus-clone/auth/signin'>
+									<StyledButton variant='outlined' className='signout' onClick={signoutHandler}>
+										<LogoutIcon />
+									</StyledButton>
+								</LogoutLink>
+							</ProfileIconBox>
+						</>
+					)}
+				</StyledToolbar>
 			</StyledContainer>
 		</StyledAppBar>
 	)
@@ -162,6 +187,10 @@ export default MainNavigation
 const StyledAppBar = styledMUI(AppBar)({
 	backgroundColor: '#030408',
 })
+const StyledToolbar = styledMUI(Toolbar)({
+	display: 'flex',
+	justifyContent: 'space-between;',
+})
 
 const StyledContainer = styledMUI(Container)({
 	minWidth: '100%',
@@ -171,6 +200,31 @@ const LogoBox = styledMUI(Box)({
 	display: 'flex',
 	marginRight: '15px',
 	height: '50px',
+})
+
+const StyledButton = styledMUI(Button)({
+	width: '150px',
+	fontWeight: 'normal',
+	fontSize: '14px',
+	color: 'white',
+	backgroundColor: 'black',
+	borderRadius: '8px',
+	border: '1px solid white',
+	transition: 'color 0.3s, background-color 0.3s, border 0.3s',
+
+	'&.signout': {
+		width: '50px',
+	},
+
+	'&:hover': {
+		color: 'black',
+		backgroundColor: 'white',
+		border: 'white',
+	},
+
+	'@media (min-width: 1000px)': {
+		fontSize: '16px',
+	},
 })
 
 const MobileMenuBox = styledMUI(Box)({

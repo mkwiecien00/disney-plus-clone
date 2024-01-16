@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, redirect } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from './util/http.js'
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,9 +15,14 @@ const CollectionResourcesPage = lazy(() => import('./components/CollectionResour
 const DiscoverMoviesPage = lazy(() => import('./pages/DiscoverMovies.jsx'))
 const DiscoverSeriesPage = lazy(() => import('./pages/DiscoverSeries.jsx'))
 const MyListPage = lazy(() => import('./pages/MyList.jsx'))
-const AuthenticationPage = lazy(() => import('./pages/Authentication.jsx'))
+const SigninPage = lazy(() => import('./pages/Signin.jsx'))
+const SignupPage = lazy(() => import('./pages/Signup.jsx'))
 
 import PreLoader from './components/Layout/PreLoader.jsx'
+import ProtectedRoutes from './util/ProtectedRoutes.jsx'
+
+import { auth } from './firebase.js'
+import { userActions } from './store/user-slice.js'
 
 const router = createBrowserRouter([
 	{
@@ -27,35 +32,43 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{
-				path: 'movie/:id',
-				element: <MovieDetailsPage />,
-			},
-			{
-				path: 'series/:id',
-				element: <SeriesDetailsPage />,
-			},
-			{
-				path: 'search',
-				element: <SearchPage />,
-			},
-			{
-				path: 'collection/:id',
-				element: <CollectionResourcesPage />,
-			},
-			{
-				path: 'discover',
+				path: 'auth',
 				children: [
-					{ path: 'movies', element: <DiscoverMoviesPage /> },
-					{ path: 'series', element: <DiscoverSeriesPage /> },
+					{ path: 'signin', element: <SigninPage /> },
+					{ path: 'signup', element: <SignupPage /> },
 				],
 			},
 			{
-				path: 'mylist',
-				element: <MyListPage />,
-			},
-			{
-				path: 'auth',
-				element: <AuthenticationPage />,
+				element: <ProtectedRoutes />,
+				children: [
+					{
+						path: 'movie/:id',
+						element: <MovieDetailsPage />,
+					},
+					{
+						path: 'series/:id',
+						element: <SeriesDetailsPage />,
+					},
+					{
+						path: 'search',
+						element: <SearchPage />,
+					},
+					{
+						path: 'collection/:id',
+						element: <CollectionResourcesPage />,
+					},
+					{
+						path: 'discover',
+						children: [
+							{ path: 'movies', element: <DiscoverMoviesPage /> },
+							{ path: 'series', element: <DiscoverSeriesPage /> },
+						],
+					},
+					{
+						path: 'mylist',
+						element: <MyListPage />,
+					},
+				],
 			},
 		],
 	},
@@ -68,6 +81,22 @@ const App = () => {
 
 	const dispatch = useDispatch()
 	const watchlist = useSelector(state => state.watchList)
+
+	useEffect(() => {
+		auth.onAuthStateChanged(authUser => {
+			if (authUser) {
+				dispatch(
+					userActions.signInUser({
+						uid: authUser.uid,
+						email: authUser.email,
+					})
+				)
+				redirect('/disney-plus-clone/')
+			} else {
+				console.log('User is not logged in.')
+			}
+		})
+	}, [dispatch])
 
 	useEffect(() => {
 		dispatch(fetchWatchListData())

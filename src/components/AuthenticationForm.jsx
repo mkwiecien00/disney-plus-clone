@@ -1,39 +1,114 @@
-// import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+
 import styled from 'styled-components'
 
 import disneyAppLogo from '../assets/images/disney-logo-color.svg'
 import googleIcon from '../assets/images/google-icon.svg'
-import Container from '../components/UI/Container'
+import Container from './UI/Container'
 
-const AuthenticationPage = () => {
+const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
+	const isSignin = mode == 'signin'
+
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [passwordError, setPasswordError] = useState('')
+
+	useEffect(() => {
+		const storedSignInEmail = localStorage.getItem('signInEmail')
+		const storedSignUpEmail = localStorage.getItem('signUpEmail')
+		const storedLastEnteredEmail = localStorage.getItem('lastEnteredEmail')
+
+		if (storedSignInEmail && isSignin) {
+			setEmail(storedSignInEmail)
+		}
+
+		if (storedSignUpEmail && !isSignin) {
+			setEmail(storedSignUpEmail)
+		}
+
+		if (storedLastEnteredEmail && isSignin && storedSignInEmail) {
+			setEmail(storedSignInEmail)
+		}
+
+		if (storedLastEnteredEmail && isSignin && !storedSignInEmail) {
+			setEmail(storedLastEnteredEmail)
+		}
+	}, [isSignin])
+
+	const emailChangeHandler = e => {
+		setEmail(e.target.value)
+	}
+
+	const passwordChangeHandler = e => {
+		setPassword(e.target.value)
+	}
+
+	const submitHandler = e => {
+		e.preventDefault()
+
+		if (isSignin) {
+			onSignin({ email: email, password: password })
+		} else {
+			if (password.length < 6) {
+				setPasswordError('Password must be at least 6 characters long.')
+			} else {
+				setPasswordError('')
+				onSignup({ email: email, password: password })
+			}
+		}
+	}
+
 	return (
 		<StyledContainer>
 			<AuthenticationBox>
 				<Logo src={disneyAppLogo} alt='Logo of Disney+ App' />
-				<form>
-					<FormHeader>Sign in</FormHeader>
+				<form onSubmit={submitHandler}>
+					<FormHeader>{isSignin ? 'Sign in' : 'Sign up'}</FormHeader>
 					<InputBox>
-						<InputField type='email' name='email' placeholder='Email' required />
-						<InputField id='password' type='password' name='password' placeholder='Password' required />
+						<InputField type='email' name='email' placeholder='Email' value={email} onChange={emailChangeHandler} required />
+						<div>
+							<InputField
+								type='password'
+								name='password'
+								placeholder='Password'
+								value={password}
+								onChange={passwordChangeHandler}
+								required
+							/>
+							{passwordError ? <Error>{passwordError}</Error> : ''}
+							{error ? <Error>{error}</Error> : ''}
+						</div>
 					</InputBox>
-					<SubmitButton type='submit'>Sign in</SubmitButton>
+					<SubmitButton type='submit'>{isSignin ? 'Sign in' : 'Sign up'}</SubmitButton>
 					<Divider>
 						<DividerText>or</DividerText>
 					</Divider>
 					<SubmitButton type='submit' className='google-submission'>
 						<SubmitLogo src={googleIcon} alt='Logo of Google' />
-						Sign in with Google
+						{isSignin ? 'Sign in with Google' : 'Sign up with Google'}
 					</SubmitButton>
 				</form>
 			</AuthenticationBox>
 			<InfoText>
-				New to Disney Plus? <span>Sign up now</span>
+				{isSignin ? 'New to Disney Plus?' : 'Already on Disney Plus?'}
+				<Link to={`${isSignin ? '/disney-plus-clone/auth/signup' : '/disney-plus-clone/auth/signin'}`}>
+					<span>{isSignin ? 'Sign up now' : 'Sign in'}</span>
+				</Link>
 			</InfoText>
 		</StyledContainer>
 	)
 }
 
-export default AuthenticationPage
+AuthenticationForm.propTypes = {
+	mode: PropTypes.string,
+	onSignin: PropTypes.func,
+	onSignup: PropTypes.func,
+	error: PropTypes.string,
+}
+
+export default AuthenticationForm
 
 const StyledContainer = styled(Container)`
 	display: flex;
@@ -45,7 +120,7 @@ const StyledContainer = styled(Container)`
 const AuthenticationBox = styled.div`
 	display: flex;
 	max-width: 350px;
-	max-height: 450px;
+	max-height: 500px;
 	flex-direction: column;
 	justify-content: center;
 	padding: 30px;
@@ -89,6 +164,13 @@ const InputField = styled.input`
 	@media (min-width: 1000px) {
 		font-size: 15px;
 	}
+`
+
+const Error = styled.p`
+	padding: 0;
+	margin: 0;
+	font-size: 11px;
+	color: #0158e1;
 `
 
 const SubmitButton = styled.button`
