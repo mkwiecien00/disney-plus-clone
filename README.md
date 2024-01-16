@@ -63,7 +63,11 @@ https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/4836f9be-5af4-4
 
 This app was created to develop my skills in programming in React and in using a React-related environment.
 
-Currently functional links in the app are links to the Disney+ homepage, Movie/Series Details page, Search page, My List page, and the Movies/Series pages.
+For signed-in users, the currently functional links in the app are links to the Disney+ homepage, Movie/Series Details page, Search page, My List page, and the Movies/Series pages. 
+For those who are not signed in, it is only possible to view the Homepage, but actually without the possibility to go any further.
+For such users, in the upper right corner of the Homepage, there is a 'GET STARTED' button, which takes the user to a SignIn/Up Page. 
+Once signed into the platform, the user has full access to it.
+
 
 At the moment, the application offers the user, among other things:
 - the possibility to display real-time data thanks to the TMDB API, 
@@ -73,9 +77,15 @@ At the moment, the application offers the user, among other things:
 - and the ability to search for resources of specific genres, e.g. searching only for documentaries.
 
 When visiting other pages, with the navigation, an error page is displayed thanks to React Router, as the pages' url's are not recognisable.
+This application has protected routes that can only be accessed by signed-in users. Anytime a non-logged-in person wants to go to a protected page, a login panel is displayed.
+
+Users are logged out after 5 minutes of being inactive.
+
+
+
 
 The project is still under development. The functionalities that will be implemented include:
-- user authentication (+login panel and the possibility of logging the user out)
+- the possibility of storing resources individually for each user, with the use of Firebase Database
 - testing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -87,13 +97,15 @@ The project is still under development. The functionalities that will be impleme
 ### Prerequisites
 
 - Node.js installed on your machine.
-- To make this project work while hosting it on GitHub Pages, I hardcoded my own TMDB API key.
+- To make this project work while hosting it on GitHub Pages, I hardcoded my own TMDB API key and Firebase Config.
 
-Nevertheless, please note that the good practice is actually to store the auth token in an environmental variable and use gitignore on the .env file to hide the auth token in the public repo. It is also important to modify your website's code to access the API key from the environment variable instead of hardcoding it.
+Nevertheless, please note that the good practice is actually to store the credentials as environmental variables and use gitignore on the .env file to hide them in the public repo. It is also important to modify your website's code to access the API keys from the environment variables instead of hardcoding them.
+
 If you want to use your own TMDB API key, you can get it by creating an account on the [TMDB](https://www.themoviedb.org/) website. Please then follow the [documentation](https://developers.themoviedb.org/3/getting-started/introduction) to create the API key.
+You might also want to use your own Firebase Config, and for that you will need an account on [Firebase](https://firebase.google.com). Then, you should create a project on your Firebase account dedicated to this Disney+ project.
 
 Since we're using GitHub Pages, it is worth remembering that it provides hosting only for static sites. In other words, a GitHub Pages site hosts only HTML and JavaScript and doesn't provide any server-side support. Everything we publish there is available to clients.
-Therefore, in order to ensure the security of API key and provide it for GitHub Pages so that it would be able to use it, we would need some sort of backend server to hold them.
+Therefore, in order to ensure the security of credentials and provide them for GitHub Pages so that GitHub Pages would be able to use them, we would need some sort of backend server to hold them.
 
 ### Installation
 
