@@ -1,0 +1,1 @@
+import{j as o}from"./index-aokAWghN.js";import{D as r}from"./DiscoverResource-gFnOEUqu.js";import"./ErrorBlock-_nIoftcQ.js";import"./MotionContainer-GIdOlb-B.js";import"./motion-B-CzYmvz.js";import"./Container-NNodWa47.js";import"./GridContainer-BNeVnHBT.js";import"./Title-OvWoT8Sv.js";import"./useTheme-4tPhEuR0.js";const v=()=>o.jsx(r,{type:"movie"});export{v as default};

@@ -1,1 +1,0 @@
-import{j as r}from"./index-5qv2dOw2.js";import{D as o}from"./DiscoverResource-Gx4mmpoT.js";import"./ErrorBlock-NOR9ZpiH.js";import"./MotionContainer-GO2Q-18_.js";import"./motion-OjOZ8-bH.js";import"./Container-h2fJLOgH.js";import"./GridContainer-oFyjeK63.js";import"./Title-l6_ZLkvo.js";import"./useTheme-xB-EWlEr.js";const x=()=>r.jsx(o,{type:"series"});export{x as default};
