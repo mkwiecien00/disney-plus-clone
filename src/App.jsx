@@ -111,7 +111,11 @@ const App = () => {
 	})
 
 	useEffect(() => {
-		dispatch(fetchWatchListData())
+		if (auth.currentUser) {
+			dispatch(fetchWatchListData({ user: auth.currentUser.uid }))
+		} else {
+			console.log('User is not logged in.')
+		}
 	}, [dispatch])
 
 	useEffect(() => {
@@ -120,8 +124,8 @@ const App = () => {
 			return
 		}
 
-		if (watchlist.changed) {
-			dispatch(sendWatchListData(watchlist))
+		if (auth.currentUser && watchlist.changed) {
+			dispatch(sendWatchListData({ watchlist, user: auth.currentUser.uid }))
 		}
 	}, [watchlist, dispatch])
 

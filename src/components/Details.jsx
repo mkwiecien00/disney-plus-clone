@@ -24,6 +24,8 @@ import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRound
 import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded'
 
+import { auth } from '../firebase'
+
 const Details = ({ type }) => {
 	useEffect(() => {
 		const scrollToTop = () => {
@@ -71,8 +73,11 @@ const Details = ({ type }) => {
 	}
 
 	const addToWatchListHandler = () => {
+		const userId = auth.currentUser.uid
+
 		dispatch(
 			watchListActions.addResourceToList({
+				userId,
 				id,
 				type: resourceType,
 				path: data.posterPath,

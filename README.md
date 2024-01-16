@@ -73,7 +73,7 @@ At the moment, the application offers the user, among other things:
 - the possibility to display real-time data thanks to the TMDB API, 
 - the display of details for each resource including the trailer video, 
 - the search and display of resources that contain a phrase entered by the user, 
-- the possibility to store resources chosen by the user to be viewed, 
+- the possibility to store resources chosen individually by each user to be viewed, 
 - and the ability to search for resources of specific genres, e.g. searching only for documentaries.
 
 When visiting other pages, with the navigation, an error page is displayed thanks to React Router, as the pages' url's are not recognisable.
@@ -82,10 +82,7 @@ This application has protected routes that can only be accessed by signed-in use
 Users are logged out after 5 minutes of being inactive.
 
 
-
-
-The project is still under development. The functionalities that will be implemented include:
-- the possibility of storing resources individually for each user, with the use of Firebase Database
+The project is still under development. The functionalities/processes that will be implemented include:
 - testing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

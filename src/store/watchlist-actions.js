@@ -1,9 +1,9 @@
 import { watchListActions } from './watchlist-slice'
 
-export const fetchWatchListData = () => {
+export const fetchWatchListData = ({ user }) => {
 	return async dispatch => {
 		const fetchWatchListData = async () => {
-			const response = await fetch('https://disney-plus-clone-9b666-default-rtdb.firebaseio.com/watchlist.json')
+			const response = await fetch(`https://disney-plus-mk-default-rtdb.firebaseio.com//${user}.json`)
 			if (!response.ok) {
 				throw new Error('Could not fetch watchlist data.')
 			}
@@ -29,21 +29,23 @@ export const fetchWatchListData = () => {
 	}
 }
 
-export const sendWatchListData = watchlist => async () => {
-	const sendData = async () => {
-		const response = await fetch('https://disney-plus-clone-9b666-default-rtdb.firebaseio.com/watchlist.json', {
-			method: 'PUT',
-			body: JSON.stringify({ resources: watchlist.resources }),
-		})
+export const sendWatchListData =
+	({ watchlist, user }) =>
+	async () => {
+		const sendData = async () => {
+			const response = await fetch(`https://disney-plus-mk-default-rtdb.firebaseio.com//${user}.json`, {
+				method: 'PUT',
+				body: JSON.stringify({ resources: watchlist.resources }),
+			})
 
-		if (!response.ok) {
-			throw new Error('Sending watchlist data failed.')
+			if (!response.ok) {
+				throw new Error('Sending watchlist data failed.')
+			}
+		}
+
+		try {
+			await sendData()
+		} catch (error) {
+			console.error('An error occurred while sending watchlist data. Please try again later.')
 		}
 	}
-
-	try {
-		await sendData()
-	} catch (error) {
-		console.error('An error occurred while sending watchlist data. Please try again later.')
-	}
-}

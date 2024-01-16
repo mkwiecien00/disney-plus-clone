@@ -7,12 +7,18 @@ import { OpacityMotionContainer } from '../components/UI/MotionContainer'
 import GridContainer from '../components/UI/GridContainer'
 import Title from '../components/UI/Title'
 
+import { auth } from '../firebase'
+
 const MyListPage = () => {
 	const watchList = useSelector(state => state.watchList)
-	const [resourceArray, setResourceArray] = useState(watchList.resources)
+	const [resourceArray, setResourceArray] = useState([])
 
 	useEffect(() => {
-		setResourceArray(watchList.resources)
+		const filteredResources = watchList.resources.filter(resource => {
+			return resource.userId === auth.currentUser.uid
+		})
+
+		setResourceArray(filteredResources)
 	}, [watchList.resources])
 
 	return (

@@ -21,6 +21,7 @@ const watchListSlice = createSlice({
 				state.changed = true
 
 				state.resources.push({
+					userId: newResource.userId,
 					detailsId: newResource.id,
 					resourceType: newResource.type,
 					path: newResource.path,
