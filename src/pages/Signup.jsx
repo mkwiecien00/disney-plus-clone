@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import { auth, dataBase } from '../firebase'
+import { auth } from '../firebase'
 import { MotionContainer } from '../components/UI/MotionContainer'
 import AuthenticationForm from '../components/AuthenticationForm'
-
-import { doc, setDoc } from 'firebase/firestore'
 
 const SignupPage = () => {
 	const navigate = useNavigate()
@@ -16,10 +14,6 @@ const SignupPage = () => {
 		try {
 			await createUserWithEmailAndPassword(auth, data.email, data.password)
 			await signInWithEmailAndPassword(auth, data.email, data.password)
-
-			setDoc(doc(dataBase, 'users', data.email), {
-				resources: [],
-			})
 
 			navigate('/disney-plus-clone/')
 

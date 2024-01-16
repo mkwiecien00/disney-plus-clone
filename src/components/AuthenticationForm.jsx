@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import disneyAppLogo from '../assets/images/disney-logo-color.svg'
-import googleIcon from '../assets/images/google-icon.svg'
 import Container from './UI/Container'
 
 const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
@@ -82,13 +81,6 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 						</div>
 					</InputBox>
 					<SubmitButton type='submit'>{isSignin ? 'Sign in' : 'Sign up'}</SubmitButton>
-					<Divider>
-						<DividerText>or</DividerText>
-					</Divider>
-					<SubmitButton type='submit' className='google-submission'>
-						<SubmitLogo src={googleIcon} alt='Logo of Google' />
-						{isSignin ? 'Sign in with Google' : 'Sign up with Google'}
-					</SubmitButton>
 				</form>
 			</AuthenticationBox>
 			<InfoText>
@@ -206,37 +198,6 @@ const SubmitButton = styled.button`
 		height: 40px;
 		font-size: 15px;
 	}
-`
-
-const Divider = styled.div`
-	display: flex;
-	justify-content: center;
-	position: relative;
-	margin: 20px 0;
-	height: 1px;
-	background-color: rgba(0, 0, 0, 0.2);
-`
-
-const DividerText = styled.p`
-	position: absolute;
-	top: -12px;
-	margin: 0;
-	padding: 0;
-	display: inline-block;
-	width: 20px;
-	text-align: center;
-	font-size: 10px;
-	color: rgba(0, 0, 0, 0.2);
-	background-color: white;
-
-	@media (min-width: 1000px) {
-		font-size: 12px;
-	}
-`
-
-const SubmitLogo = styled.img`
-	height: 20px;
-	margin-right: 4px;
 `
 
 const InfoText = styled.p`
