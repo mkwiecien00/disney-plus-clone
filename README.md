@@ -14,6 +14,7 @@
         <li><a href="#usage">Usage</a></li>
       </ul>
     </li>
+      <li><a href="#sample-credentials">Sample Credentials</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -81,9 +82,22 @@ This application has protected routes that can only be accessed by signed-in use
 
 Users are logged out after 5 minutes of being inactive.
 
+<br />
+<br />
 
 The project is still under development. The functionalities/processes that will be implemented include:
 - testing
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SAMPLE CREDENTIALS -->
+
+## Sample Credentials
+
+**Sample login details, please enter them into the sign-in panel in order to use this app:**
+- login: test@test.com
+- password: test123
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
