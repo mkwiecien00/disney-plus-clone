@@ -62,7 +62,7 @@ const Details = ({ type }) => {
 
 	const dispatch = useDispatch()
 	const watchList = useSelector(state => state.watchList.resources)
-	const isAddedToWatchList = watchList.find(item => item.detailsId === id)
+	const isAddedToWatchList = watchList.find(item => item.detailsId === id && item.userId === auth.currentUser.uid)
 
 	let resourceType = ''
 
