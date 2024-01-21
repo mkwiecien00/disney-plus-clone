@@ -91,7 +91,9 @@ const App = () => {
 						uid: authUser.uid,
 						email: authUser.email,
 					})
-				)
+				),
+					dispatch(fetchWatchListData({ user: auth.currentUser.uid }))
+
 				redirect('/disney-plus-clone/')
 			} else {
 				console.log('User is not logged in.')
@@ -109,14 +111,6 @@ const App = () => {
 		onIdle,
 		timeout: 5 * (60 * 1000),
 	})
-
-	useEffect(() => {
-		if (auth.currentUser) {
-			dispatch(fetchWatchListData({ user: auth.currentUser.uid }))
-		} else {
-			console.log('User is not logged in.')
-		}
-	}, [dispatch])
 
 	useEffect(() => {
 		if (isInitial) {

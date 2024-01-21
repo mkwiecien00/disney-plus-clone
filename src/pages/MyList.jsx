@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import styled from 'styled-components'
 import Container from '@components/UI/Container'
@@ -11,17 +11,8 @@ import { fetchWatchListData } from '@store/watchlist-actions'
 import { auth } from '@/firebase'
 
 const MyListPage = () => {
-	const dispatch = useDispatch()
 	const watchList = useSelector(state => state.watchList)
 	const [resourceArray, setResourceArray] = useState([])
-
-	useEffect(() => {
-		if (auth.currentUser) {
-			dispatch(fetchWatchListData({ user: auth.currentUser.uid }))
-		} else {
-			console.log('User is not logged in.')
-		}
-	}, [dispatch])
 
 	useEffect(() => {
 		const filteredResources = watchList.resources.filter(resource => {
