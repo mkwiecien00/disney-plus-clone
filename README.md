@@ -33,30 +33,23 @@
 This project is an attempt to clone the Disney+ App. It is so far built with React, Redux Toolkit, React Router, Tanstack Query, Vite, styled components, Material UI, Framer Motion, Firebase, the TMDB API and other third-party libraries such as React Spinners. Moreover, it is fully responsive and follows the mobile-first concept. Please note, that this project is still under development, so any updates will appear gradually.
 
 <!-- DESKTOP SCREENSHOTS -->
-<img src="./src/assets/screenshots/desktop/homepage.png"/>
+<img src="@screenshots/desktop/homepage.png"/>
 
-<img src="./src/assets/screenshots/desktop/details.png"/>
+<img src="@screenshots/desktop/details.png"/>
 
-<img src="./src/assets/screenshots/desktop/searchpage.png"/>
+<img src="@screenshots/desktop/searchpage.png"/>
 
-<img src="./src/assets/screenshots/desktop/searchquery.png"/>
+<img src="@screenshots/desktop/searchquery.png"/>
 
 <!-- MOBILE SCREENSHOTS -->
 
-<img src="./src/assets/screenshots/mobile/homepage.png" width="45%"/> <img src="./src/assets/screenshots/mobile/details.png" width="45%"/>
+<img src="@screenshots/mobile/homepage.png" width="45%"/> <img src="@screenshots/mobile/details.png" width="45%"/>
 
-<img src="./src/assets/screenshots/mobile/searchquery.png" width="45%"/> <img src="./src/assets/screenshots/mobile/errorpage.png" width="45%"/>
-
+<img src="@screenshots/mobile/searchquery.png" width="45%"/> <img src="@screenshots/mobile/errorpage.png" width="45%"/>
 
 https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/d0abd1d3-9676-4a17-a0a9-3c63bfefc365
 
-
-
 https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/4836f9be-5af4-41ef-8253-a978c9f7be57
-
-
-
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -64,17 +57,17 @@ https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/4836f9be-5af4-4
 
 This app was created to develop my skills in programming in React and in using a React-related environment.
 
-For signed-in users, the currently functional links in the app are links to the Disney+ homepage, Movie/Series Details page, Search page, My List page, and the Movies/Series pages. 
+For signed-in users, the currently functional links in the app are links to the Disney+ homepage, Movie/Series Details page, Search page, My List page, and the Movies/Series pages.
 For those who are not signed in, it is only possible to view the Homepage, but actually without the possibility to go any further.
-For such users, in the upper right corner of the Homepage, there is a 'GET STARTED' button, which takes the user to a SignIn/Up Page. 
+For such users, in the upper right corner of the Homepage, there is a 'GET STARTED' button, which takes the user to a SignIn/Up Page.
 Once signed into the platform, the user has full access to it.
 
-
 At the moment, the application offers the user, among other things:
-- the possibility to display real-time data thanks to the TMDB API, 
-- the display of details for each resource including the trailer video, 
-- the search and display of resources that contain a phrase entered by the user, 
-- the possibility to store resources chosen individually by each user to be viewed, 
+
+- the possibility to display real-time data thanks to the TMDB API,
+- the display of details for each resource including the trailer video,
+- the search and display of resources that contain a phrase entered by the user,
+- the possibility to store resources chosen individually by each user to be viewed,
 - and the ability to search for resources of specific genres, e.g. searching only for documentaries.
 
 When visiting other pages, with the navigation, an error page is displayed thanks to React Router, as the pages' url's are not recognisable.
@@ -86,6 +79,7 @@ Users are logged out after 5 minutes of being inactive.
 <br />
 
 The project is still under development. The functionalities/processes that will be implemented include:
+
 - testing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -95,9 +89,9 @@ The project is still under development. The functionalities/processes that will 
 ## Sample Credentials
 
 **Sample login details, please enter them into the sign-in panel in order to use this app:**
+
 - login: test@test.com
 - password: test123
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

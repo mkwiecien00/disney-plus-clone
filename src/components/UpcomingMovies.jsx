@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
-import { fetchHomePageData } from '../util/http'
+import { fetchHomePageData } from '@util/http'
 
-import Container from './UI/Container'
-import GridContainer from './UI/GridContainer'
-import Loader from './UI/Loader'
-import ErrorBlock from './UI/ErrorBlock'
+import Container from '@components/UI/Container'
+import GridContainer from '@components/UI/GridContainer'
+import Loader from '@components/UI/Loader'
+import ErrorBlock from '@components/UI/ErrorBlock'
 
 const UpcomingMovies = () => {
 	const { data, isPending, isError } = useQuery({

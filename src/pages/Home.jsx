@@ -1,7 +1,7 @@
-import Container from '../components/UI/Container'
-import ImageSlider from '../components/ImageSlider'
-import Collections from '../components/Collections'
-import Movies from '../components/Movies'
+import Container from '@components/UI/Container'
+import ImageSlider from '@components/ImageSlider'
+import Collections from '@components/Collections'
+import Movies from '@components/Movies'
 
 const HomePage = () => {
 	return (

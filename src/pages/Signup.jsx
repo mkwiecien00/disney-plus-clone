@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../firebase'
-import { MotionContainer } from '../components/UI/MotionContainer'
-import AuthenticationForm from '../components/AuthenticationForm'
+import { auth } from '@/firebase'
+import { MotionContainer } from '@components/UI/MotionContainer'
+import AuthenticationForm from '@components/AuthenticationForm'
 
 const SignupPage = () => {
 	const navigate = useNavigate()

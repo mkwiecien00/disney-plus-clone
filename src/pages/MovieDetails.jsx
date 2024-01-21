@@ -1,4 +1,4 @@
-import Details from '../components/Details'
+import Details from '@components/Details'
 
 const MovieDetailsPage = () => {
 	return <Details type='movie' />

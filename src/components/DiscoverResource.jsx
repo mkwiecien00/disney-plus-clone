@@ -3,14 +3,14 @@ import { useQuery } from '@tanstack/react-query'
 import { PropTypes } from 'prop-types'
 
 import styled from 'styled-components'
-import { fetchListForCategory } from '../util/http'
+import { fetchListForCategory } from '@util/http'
 
-import Container from '../components/UI/Container'
-import GridContainer from './UI/GridContainer'
-import { OpacityMotionContainer } from './UI/MotionContainer'
-import Loader from './UI/Loader'
-import ErrorBlock from './UI/ErrorBlock'
-import Title from './UI/Title'
+import Container from '@components/UI/Container'
+import GridContainer from '@components/UI/GridContainer'
+import { OpacityMotionContainer } from '@components/UI/MotionContainer'
+import Loader from '@components/UI/Loader'
+import ErrorBlock from '@components/UI/ErrorBlock'
+import Title from '@components/UI/Title'
 
 const categoryOptions = {
 	movie: [

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { motion, AnimatePresence } from 'framer-motion'
-import { auth } from '../../firebase'
+import { auth } from '@/firebase'
 import { signOut } from 'firebase/auth'
-import { userActions } from '../../store/user-slice'
+import { userActions } from '@store/user-slice'
 import { styled as styledMUI } from '@mui/system'
 
 import AppBar from '@mui/material/AppBar'
@@ -27,7 +27,7 @@ import LocalMoviesOutlinedIcon from '@mui/icons-material/LocalMoviesOutlined'
 import MovieFilterOutlinedIcon from '@mui/icons-material/MovieFilterOutlined'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-import disneyAppLogo from '../../assets/images/disney-logo.svg'
+import disneyAppLogo from '@images/disney-logo.svg'
 
 const menuItems = [
 	{ text: 'Home', path: '/disney-plus-clone/', icon: <HomeOutlinedIcon /> },

@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import styled from 'styled-components'
-import Container from '../components/UI/Container'
-import { OpacityMotionContainer } from '../components/UI/MotionContainer'
-import GridContainer from '../components/UI/GridContainer'
-import Title from '../components/UI/Title'
+import Container from '@components/UI/Container'
+import { OpacityMotionContainer } from '@components/UI/MotionContainer'
+import GridContainer from '@components/UI/GridContainer'
+import Title from '@components/UI/Title'
 
-import { auth } from '../firebase'
+import { auth } from '@/firebase'
 
 const MyListPage = () => {
 	const watchList = useSelector(state => state.watchList)

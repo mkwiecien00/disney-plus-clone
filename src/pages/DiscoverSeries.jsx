@@ -1,4 +1,4 @@
-import DiscoverResource from '../components/DiscoverResource'
+import DiscoverResource from '@components/DiscoverResource'
 
 const DiscoverSeriesPage = () => {
 	return <DiscoverResource type='series' />

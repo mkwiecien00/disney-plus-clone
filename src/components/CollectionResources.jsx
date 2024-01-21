@@ -2,13 +2,13 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
-import { fetchCollectionResources } from '../util/http'
+import { fetchCollectionResources } from '@util/http'
 
-import Container from './UI/Container'
-import GridContainer from './UI/GridContainer'
-import { OpacityMotionContainer } from './UI/MotionContainer'
-import Loader from './UI/Loader'
-import ErrorBlock from './UI/ErrorBlock'
+import Container from '@components/UI/Container'
+import GridContainer from '@components/UI/GridContainer'
+import { OpacityMotionContainer } from '@components/UI/MotionContainer'
+import Loader from '@components/UI/Loader'
+import ErrorBlock from '@components/UI/ErrorBlock'
 
 const collectionInfo = {
 	disney: {

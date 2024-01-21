@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 
-import Title from './Title'
+import Title from '@components/UI/Title'
 import { Grid } from '@mui/material'
-import ItemContainer from './ItemContainer'
+import ItemContainer from '@components/UI/ItemContainer'
 
 const GridContainer = ({ movies, path, title }) => {
 	return (

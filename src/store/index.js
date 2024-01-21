@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import watchListSlice from './watchlist-slice'
-import userSlice from './user-slice'
+import watchListSlice from '@store/watchlist-slice'
+import userSlice from '@store/user-slice'
 
 const store = configureStore({
 	reducer: {

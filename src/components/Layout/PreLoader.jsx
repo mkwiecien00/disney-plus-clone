@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import loaderIntro from '../../assets/videos/loader-video.mp4'
+import loaderIntro from '@videos/loader-video.mp4'
 
 const PreLoader = () => {
 	return (

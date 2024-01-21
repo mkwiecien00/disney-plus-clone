@@ -3,16 +3,16 @@ import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
 
-import { fetchDataFromQuery } from '../util/http'
+import { fetchDataFromQuery } from '@util/http'
 
-import Container from '../components/UI/Container'
-import { OpacityMotionContainer } from '../components/UI/MotionContainer'
-import GridContainer from '../components/UI/GridContainer'
-import SearchInput from '../components/UI/SearchInput'
-import Title from '../components/UI/Title'
-import Loader from '../components/UI/Loader'
-import ErrorBlock from '../components/UI/ErrorBlock'
-import UpcomingMovies from '../components/UpcomingMovies'
+import Container from '@components/UI/Container'
+import { OpacityMotionContainer } from '@components/UI/MotionContainer'
+import GridContainer from '@components/UI/GridContainer'
+import SearchInput from '@components/UI/SearchInput'
+import Title from '@components/UI/Title'
+import Loader from '@components/UI/Loader'
+import ErrorBlock from '@components/UI/ErrorBlock'
+import UpcomingMovies from '@components/UpcomingMovies'
 
 const SearchPage = () => {
 	const storedQuery = localStorage.getItem('searchQuery')

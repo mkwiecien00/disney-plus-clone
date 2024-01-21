@@ -6,11 +6,11 @@ import styled from 'styled-components'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
-import Title from './Title'
-import Loader from './Loader'
-import ErrorBlock from './ErrorBlock'
-import { MotionContainer } from './MotionContainer'
-import ItemContainer from '../UI/ItemContainer'
+import Title from '@components/UI/Title'
+import Loader from '@components/UI/Loader'
+import ErrorBlock from '@components/UI/ErrorBlock'
+import { MotionContainer } from '@components/UI/MotionContainer'
+import ItemContainer from '@components/UI/ItemContainer'
 
 const MovieCarousel = ({ data, isPending, isError }) => {
 	const [centerSlidePercentage, setCenterSlidePercentage] = useState(40)

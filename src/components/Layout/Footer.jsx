@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import disneyLogo from '../../assets/images/disney-logo.svg'
+import disneyLogo from '@images/disney-logo.svg'
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear()

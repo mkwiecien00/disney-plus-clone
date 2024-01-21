@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { styled as styledMUI } from '@mui/system'
 
-import MainNavigation from '../components/Layout/MainNavigation'
-import { MotionContainer } from '../components/UI/MotionContainer'
-import ErrorImg from '../assets/images/error-img.png'
+import MainNavigation from '@components/Layout/MainNavigation'
+import { MotionContainer } from '@components/UI/MotionContainer'
+import ErrorImg from '@images/error-img.png'
 import Button from '@mui/material/Button'
 
 const ErrorPage = () => {

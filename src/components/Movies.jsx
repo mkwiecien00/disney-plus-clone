@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { fetchHomePageData } from '../util/http'
-import MovieCarousel from './UI/MovieCarousel'
+import { fetchHomePageData } from '@util/http'
+import MovieCarousel from '@components/UI/MovieCarousel'
 
 const Movies = () => {
 	const { data, isPending, isError } = useQuery({
