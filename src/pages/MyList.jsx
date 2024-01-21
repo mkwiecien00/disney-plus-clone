@@ -7,7 +7,6 @@ import { OpacityMotionContainer } from '@components/UI/MotionContainer'
 import GridContainer from '@components/UI/GridContainer'
 import Title from '@components/UI/Title'
 
-import { fetchWatchListData } from '@store/watchlist-actions'
 import { auth } from '@/firebase'
 
 const MyListPage = () => {
