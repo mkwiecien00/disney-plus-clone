@@ -92,7 +92,7 @@ const App = () => {
 						email: authUser.email,
 					})
 				),
-					dispatch(fetchWatchListData({ user: auth.currentUser.uid }))
+					dispatch(fetchWatchListData({ user: authUser.uid }))
 
 				redirect('/disney-plus-clone/')
 			} else {
