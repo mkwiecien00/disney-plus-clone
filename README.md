@@ -33,19 +33,19 @@
 This project is an attempt to clone the Disney+ App. It is so far built with React, Redux Toolkit, React Router, Tanstack Query, Vite, styled components, Material UI, Framer Motion, Firebase, the TMDB API and other third-party libraries such as React Spinners. Moreover, it is fully responsive and follows the mobile-first concept. Please note, that this project is still under development, so any updates will appear gradually.
 
 <!-- DESKTOP SCREENSHOTS -->
-<img src="@screenshots/desktop/homepage.png"/>
+<img src="./src/assets/screenshots/desktop/homepage.png"/>
 
-<img src="@screenshots/desktop/details.png"/>
+<img src="./src/assets/screenshots/desktop/details.png"/>
 
-<img src="@screenshots/desktop/searchpage.png"/>
+<img src="./src/assets/screenshots/desktop/searchpage.png"/>
 
-<img src="@screenshots/desktop/searchquery.png"/>
+<img src="./src/assets/screenshots/desktop/searchquery.png"/>
 
 <!-- MOBILE SCREENSHOTS -->
 
-<img src="@screenshots/mobile/homepage.png" width="45%"/> <img src="@screenshots/mobile/details.png" width="45%"/>
+<img src="./src/assets/screenshots/mobile/homepage.png" width="45%"/> <img src="./src/assets/screenshots/mobile/details.png" width="45%"/>
 
-<img src="@screenshots/mobile/searchquery.png" width="45%"/> <img src="@screenshots/mobile/errorpage.png" width="45%"/>
+<img src="./src/assets/screenshots/mobile/searchquery.png" width="45%"/> <img src="./src/assets/screenshots/mobile/errorpage.png" width="45%"/>
 
 https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/d0abd1d3-9676-4a17-a0a9-3c63bfefc365
 
