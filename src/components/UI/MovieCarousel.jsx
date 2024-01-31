@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import Carousel from '@components/UI/Carousel'
 
 import Title from '@components/UI/Title'
 import Loader from '@components/UI/Loader'
@@ -13,32 +12,32 @@ import { MotionContainer } from '@components/UI/MotionContainer'
 import ItemContainer from '@components/UI/ItemContainer'
 
 const MovieCarousel = ({ data, isPending, isError }) => {
-	const [centerSlidePercentage, setCenterSlidePercentage] = useState(40)
+	const [slidesToShow, setSlidesToShow] = useState(2)
 
 	useEffect(() => {
 		const handleResize = () => {
 			const width = window.innerWidth
-			let percentage
+			let slidesAmount
 
 			switch (true) {
 				case width <= 400:
-					percentage = 40
+					slidesAmount = 1
 					break
 				case width <= 600:
-					percentage = 35
+					slidesAmount = 2
 					break
 				case width <= 900:
-					percentage = 25
+					slidesAmount = 3
 					break
 				case width <= 1100:
-					percentage = 20
+					slidesAmount = 4
 					break
 				default:
-					percentage = 15
+					slidesAmount = 5
 					break
 			}
 
-			setCenterSlidePercentage(percentage)
+			setSlidesToShow(slidesAmount)
 		}
 
 		handleResize()
@@ -48,6 +47,10 @@ const MovieCarousel = ({ data, isPending, isError }) => {
 			window.removeEventListener('resize', handleResize)
 		}
 	}, [])
+
+	const sliderSettings = {
+		slidesToShow: slidesToShow,
+	}
 
 	return (
 		<Wrapper>
@@ -61,16 +64,7 @@ const MovieCarousel = ({ data, isPending, isError }) => {
 								<div key={category.category}>
 									<StyledTitle>{category.title}</StyledTitle>
 									{category.data ? (
-										<StyledCarousel
-											key={category.category}
-											showArrows={true}
-											showStatus={false}
-											showIndicators={false}
-											showThumbs={false}
-											useKeyboardArrows={true}
-											swipeable={true}
-											centerMode={true}
-											centerSlidePercentage={centerSlidePercentage}>
+										<StyledCarousel additionalSettings={sliderSettings}>
 											{category.data.results.map((item, index) => (
 												<Link to={`/disney-plus-clone/${category.type}/${item.id}`} key={index}>
 													<DataContainer key={index}>
@@ -108,16 +102,8 @@ const StyledTitle = styled(Title)`
 `
 
 const StyledCarousel = styled(Carousel)`
-	.carousel .slide {
-		padding: 10px 10px 40px;
-	}
-
-	.carousel.carousel-slider .control-arrow {
-		padding: 2%;
-
-		&:hover {
-			background: transparent;
-		}
+	.slick-track {
+		padding: 10px 0 40px;
 	}
 `
 
