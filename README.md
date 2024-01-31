@@ -3,9 +3,13 @@
 <div align="center">
     <img src="https://i0.wp.com/www.appletips.nl/wp-content/uploads/2019/09/disney-logo.png?fit=1550%2C1550&ssl=1" alt="Logo" width='200' style="border-radius:50px">
   <h2 align="center">Disney Plus App Clone</h1>
+    <br />
+    <a href="https://mkwiecien00.github.io/disney-plus-clone/">View Demo</a>
+    ·
+    <a href="https://github.com/mkwiecien00/disney-plus-clone">Explore the docs</a>
 </div>
 
-<details>
+<details open="open">
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -147,9 +151,5 @@ Therefore, in order to ensure the security of credentials and provide them for G
 ## Contact
 
 LinkedIn - [Małgorzata Kwiecień](https://www.linkedin.com/in/malgorzatakwiecien00/)
-
-Solution URL: [GitHub](https://github.com/mkwiecien00/disney-plus-clone)
-
-Live Site URL: [GitHub Pages](https://mkwiecien00.github.io/disney-plus-clone/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
