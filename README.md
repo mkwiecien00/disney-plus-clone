@@ -37,15 +37,15 @@ This project is an attempt to clone the Disney+ App. It is so far built with Rea
 
 <img src="./src/assets/screenshots/desktop/details.png"/>
 
-<img src="./src/assets/screenshots/desktop/searchpage.png"/>
-
 <img src="./src/assets/screenshots/desktop/searchquery.png"/>
+
+<img src="./src/assets/screenshots/desktop/movies.png"/>
 
 <!-- MOBILE SCREENSHOTS -->
 
 <img src="./src/assets/screenshots/mobile/homepage.png" width="45%"/> <img src="./src/assets/screenshots/mobile/details.png" width="45%"/>
 
-<img src="./src/assets/screenshots/mobile/searchquery.png" width="45%"/> <img src="./src/assets/screenshots/mobile/errorpage.png" width="45%"/>
+<img src="./src/assets/screenshots/mobile/search.png" width="45%"/> <img src="./src/assets/screenshots/mobile/errorpage.png" width="45%"/>
 
 https://github.com/mkwiecien00/disney-plus-clone/assets/99047592/d0abd1d3-9676-4a17-a0a9-3c63bfefc365
 
