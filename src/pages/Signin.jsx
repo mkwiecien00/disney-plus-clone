@@ -17,6 +17,7 @@ const SigninPage = () => {
 
 			localStorage.setItem('lastEnteredEmail', data.email)
 			localStorage.removeItem('signInEmail')
+			localStorage.removeItem('signUpEmail')
 		} catch (error) {
 			console.error(error)
 			if (error.code === 'auth/invalid-credential') {

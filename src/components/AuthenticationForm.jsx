@@ -19,6 +19,11 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 		const storedSignUpEmail = localStorage.getItem('signUpEmail')
 		const storedLastEnteredEmail = localStorage.getItem('lastEnteredEmail')
 
+		if (!storedSignInEmail & !storedLastEnteredEmail & !storedSignUpEmail & isSignin) {
+			setEmail('test@test.com')
+			setPassword('test123')
+		}
+
 		if (storedSignInEmail && isSignin) {
 			setEmail(storedSignInEmail)
 		}
@@ -33,6 +38,10 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 
 		if (storedLastEnteredEmail && isSignin && !storedSignInEmail) {
 			setEmail(storedLastEnteredEmail)
+		}
+
+		if (storedLastEnteredEmail === 'test@test.com' && isSignin) {
+			setPassword('test123')
 		}
 	}, [isSignin])
 
