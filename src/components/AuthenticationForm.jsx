@@ -9,10 +9,14 @@ import Container from '@components/UI/Container'
 
 const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 	const isSignin = mode == 'signin'
+	const minPasswordLength = 10
+	const maxUserNameCharactersAmount = 10
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [passwordError, setPasswordError] = useState('')
+	const [userName, setUserName] = useState('')
+	const [userNameError, setUserNameError] = useState('')
 
 	useEffect(() => {
 		const storedSignInEmail = localStorage.getItem('signInEmail')
@@ -53,17 +57,32 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 		setPassword(e.target.value)
 	}
 
+	const userNameChangeHandler = e => {
+		setUserName(e.target.value)
+	}
+
 	const submitHandler = e => {
 		e.preventDefault()
 
 		if (isSignin) {
 			onSignin({ email: email, password: password })
 		} else {
-			if (password.length < 6) {
+			if (userName.trim() === '') {
+				setUserNameError('Username cannot be empty.')
+			} else if (userName.length > maxUserNameCharactersAmount) {
+				setUserNameError('Username cannot be longer than 10 characters.')
+			} else {
+				setUserNameError('')
+			}
+
+			if (password.length < minPasswordLength) {
 				setPasswordError('Password must be at least 6 characters long.')
 			} else {
 				setPasswordError('')
-				onSignup({ email: email, password: password })
+			}
+
+			if (!userNameError && !passwordError) {
+				onSignup({ email: email, password: password, userName: userName })
 			}
 		}
 	}
@@ -75,6 +94,12 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 				<form onSubmit={submitHandler}>
 					<FormHeader>{isSignin ? 'Sign in' : 'Sign up'}</FormHeader>
 					<InputBox>
+						{!isSignin && (
+							<div>
+								<InputField type='name' name='username' placeholder='Username' value={userName} onChange={userNameChangeHandler} required />
+								{userNameError ? <Error>{userNameError}</Error> : ''}
+							</div>
+						)}
 						<InputField type='email' name='email' placeholder='Email' value={email} onChange={emailChangeHandler} required />
 						<div>
 							<InputField
@@ -187,20 +212,6 @@ const SubmitButton = styled.button`
 
 	&:hover {
 		background-color: #0582f0;
-	}
-
-	&.google-submission {
-		color: white;
-		background-color: rgba(0, 0, 0);
-		border: 1px solid rgba(0, 0, 0, 0.4);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	&.google-submission:hover {
-		color: black;
-		background-color: white;
 	}
 
 	@media (min-width: 1000px) {

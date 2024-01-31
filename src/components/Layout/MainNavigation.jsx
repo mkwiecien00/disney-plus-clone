@@ -25,7 +25,7 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'
 
 import LocalMoviesOutlinedIcon from '@mui/icons-material/LocalMoviesOutlined'
 import MovieFilterOutlinedIcon from '@mui/icons-material/MovieFilterOutlined'
-import LogoutIcon from '@mui/icons-material/Logout'
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 
 import disneyAppLogo from '@images/disney-logo.svg'
 
@@ -167,10 +167,11 @@ const MainNavigation = () => {
 							</DesktopMenuBox>
 
 							<ProfileIconBox>
-								<Avatar alt='Profile Icon' src='https://disney-plus-nu.vercel.app/content/media/users/avatar/iara.png' />
+								<UserName sx={{ display: { xs: 'none', md: 'flex' } }}>{user.userName}</UserName>
+								<Avatar alt='Profile Icon'>{user.userName ? user.userName.charAt(0).toUpperCase() : 'A'}</Avatar>
 								<LogoutLink to='/disney-plus-clone/auth/signin'>
 									<StyledButton variant='outlined' className='signout' onClick={signoutHandler}>
-										<LogoutIcon />
+										<LogoutRoundedIcon />
 									</StyledButton>
 								</LogoutLink>
 							</ProfileIconBox>
@@ -213,7 +214,11 @@ const StyledButton = styledMUI(Button)({
 	transition: 'color 0.3s, background-color 0.3s, border 0.3s',
 
 	'&.signout': {
-		width: '50px',
+		minWidth: 'auto',
+		width: '40px',
+		height: '40px',
+		padding: '0',
+		borderRadius: '50%',
 	},
 
 	'&:hover': {
@@ -308,6 +313,10 @@ const ProfileIconBox = styledMUI(Box)({
 	alignItems: 'center',
 	justifyContent: 'center',
 	flexGrow: 0,
+})
+
+const UserName = styledMUI(Typography)({
+	padding: '12px',
 })
 
 const LogoutLink = styledMUI(Link)({

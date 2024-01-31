@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import Carousel from '@components/UI/Carousel'
 
 import imgSlideOne from '@images/slides/imgslide-1.jpg'
 import imgSlideTwo from '@images/slides/imgslide-2.jpg'
@@ -24,21 +23,16 @@ const slideImages = [
 ]
 
 const ImageSlider = () => {
+	const sliderSettings = {
+		autoplay: true,
+		slidesToShow: 1,
+		dots: true,
+	}
+
 	return (
 		<Wrapper>
 			<MotionContainer>
-				<StyledCarousel
-					autoPlay
-					infiniteLoop
-					showArrows={true}
-					showStatus={false}
-					showIndicators={true}
-					showThumbs={false}
-					interval={5000}
-					useKeyboardArrows={true}
-					swipeable={true}
-					centerMode={true}
-					centerSlidePercentage={90}>
+				<StyledCarousel additionalSettings={sliderSettings}>
 					{slideImages.map((image, index) => (
 						<Link to={`/disney-plus-clone/${image.path}/${image.id}`} key={index}>
 							<SlideContainer key={index}>
@@ -60,25 +54,8 @@ const Wrapper = styled.section`
 `
 
 const StyledCarousel = styled(Carousel)`
-	.carousel .slide {
-		padding: 20px 10px 50px;
-	}
-
-	.carousel .control-dots {
-		position: absolute;
-		bottom: 55px;
-		right: 8vw;
-		width: 100%;
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	.carousel.carousel-slider .control-arrow {
-		padding: 1.75%;
-
-		&:hover {
-			background: transparent;
-		}
+	.slick-track {
+		padding: 20px 0 50px;
 	}
 `
 
@@ -106,7 +83,7 @@ const OverlayImage = styled.div`
 	opacity: 0;
 	transition: opacity 2.5s ease, transform 2s ease;
 
-	.slide.selected & {
+	.slick-center & {
 		opacity: 1;
 		transform: translateX(-2%);
 	}

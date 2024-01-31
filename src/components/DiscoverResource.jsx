@@ -70,7 +70,7 @@ const DiscoverResource = ({ type }) => {
 		<StyledContainer>
 			<Wrapper>
 				<StyledTitle>Select your favorite {type} category:</StyledTitle>
-				<StyledSelect id='category-selection' value={selectedCategory} onChange={categorySelectHandler}>
+				<StyledSelect id='category-selection' value={selectedCategory} onChange={categorySelectHandler} className='select'>
 					{categoryOptions[type].map(category => (
 						<option key={category.id} value={category.id}>
 							{category.name}
@@ -136,7 +136,7 @@ const StyledTitle = styled(Title)`
 `
 
 const StyledSelect = styled.select`
-	width: 160px;
+	width: 200px;
 	cursor: pointer;
 	padding: 10px 20px;
 	appearance: none;
@@ -150,5 +150,13 @@ const StyledSelect = styled.select`
 
 	&:hover {
 		background-color: rgba(49, 51, 60, 0.5);
+	}
+
+	&.select {
+		background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%),
+			linear-gradient(to right, #ccc, #ccc);
+		background-position: calc(100% - 20px) calc(10px + 5px), calc(100% - 15px) calc(10px + 5px), calc(100% - 30px) 10px;
+		background-size: 5px 5px, 5px 5px, 1px 15px;
+		background-repeat: no-repeat;
 	}
 `
