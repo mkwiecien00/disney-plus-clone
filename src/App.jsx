@@ -90,6 +90,7 @@ const App = () => {
 					userActions.signInUser({
 						uid: authUser.uid,
 						email: authUser.email,
+						userName: authUser.displayName,
 					})
 				),
 					dispatch(fetchWatchListData({ user: authUser.uid }))

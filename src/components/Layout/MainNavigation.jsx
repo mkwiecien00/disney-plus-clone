@@ -167,6 +167,7 @@ const MainNavigation = () => {
 							</DesktopMenuBox>
 
 							<ProfileIconBox>
+								<UserName sx={{ display: { xs: 'none', md: 'flex' } }}>{user.userName}</UserName>
 								<Avatar alt='Profile Icon' src='https://disney-plus-nu.vercel.app/content/media/users/avatar/iara.png' />
 								<LogoutLink to='/disney-plus-clone/auth/signin'>
 									<StyledButton variant='outlined' className='signout' onClick={signoutHandler}>
@@ -312,6 +313,10 @@ const ProfileIconBox = styledMUI(Box)({
 	alignItems: 'center',
 	justifyContent: 'center',
 	flexGrow: 0,
+})
+
+const UserName = styledMUI(Typography)({
+	padding: '12px',
 })
 
 const LogoutLink = styledMUI(Link)({
