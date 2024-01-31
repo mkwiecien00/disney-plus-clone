@@ -168,7 +168,7 @@ const MainNavigation = () => {
 
 							<ProfileIconBox>
 								<UserName sx={{ display: { xs: 'none', md: 'flex' } }}>{user.userName}</UserName>
-								<Avatar alt='Profile Icon' src='https://disney-plus-nu.vercel.app/content/media/users/avatar/iara.png' />
+								<Avatar alt='Profile Icon'>{user.userName ? user.userName.charAt(0).toUpperCase() : 'A'}</Avatar>
 								<LogoutLink to='/disney-plus-clone/auth/signin'>
 									<StyledButton variant='outlined' className='signout' onClick={signoutHandler}>
 										<LogoutRoundedIcon />
