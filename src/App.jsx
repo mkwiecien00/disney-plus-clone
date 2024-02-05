@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { sendWatchListData } from '@store/watchlist-actions.js'
 import useIdle from '@hooks/use-idle'
 import useAuthState from '@hooks/use-authstate'
+import useLocalStorageCleanup from '@hooks/use-cleanup'
 
 import PreLoader from '@components/Layout/PreLoader.jsx'
 
@@ -21,6 +22,7 @@ const App = () => {
 
 	useIdle()
 	useAuthState()
+	useLocalStorageCleanup()
 
 	useEffect(() => {
 		if (isInitial) {
@@ -34,12 +36,6 @@ const App = () => {
 	}, [watchlist, dispatch])
 
 	useEffect(() => {
-		Object.keys(localStorage).forEach(key => {
-			if (key.includes('searchQuery') || key.includes('selectedCategory')) {
-				localStorage.removeItem(key)
-			}
-		})
-
 		const preloading = setTimeout(() => {
 			setIsLoading(false)
 		}, 3000)
