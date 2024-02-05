@@ -34,7 +34,7 @@
 
 ## About The Project
 
-This project is an attempt to clone the Disney+ App. It is so far built with React, Redux Toolkit, React Router, Tanstack Query, Vite, styled components, Material UI, Framer Motion, Firebase, the TMDB API and other third-party libraries such as React Spinners. Moreover, it is fully responsive and follows the mobile-first concept. Please note, that this project is still under development, so any updates will appear gradually.
+This project is an attempt to clone the Disney+ App. It is so far built with React, Redux Toolkit, React Router, Tanstack Query, Vite, styled components, Material UI, Framer Motion, Firebase, the TMDB API and other third-party libraries such as React Spinners. Moreover, it is fully responsive and follows the mobile-first concept.
 
 <!-- DESKTOP SCREENSHOTS -->
 <img src="./src/assets/screenshots/desktop/homepage.png"/>
@@ -85,12 +85,8 @@ This application has protected routes that can only be accessed by signed-in use
 
 Users are logged out after 5 minutes of being inactive.
 
-<br />
-<br />
 
-The project is still under development. The functionalities/processes that will be implemented include:
 
-- testing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
