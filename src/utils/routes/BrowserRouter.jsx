@@ -12,7 +12,7 @@ const CollectionResourcesPage = lazy(() => import('@components/CollectionResourc
 const DiscoverMoviesPage = lazy(() => import('@pages/DiscoverMovies.jsx'))
 const DiscoverSeriesPage = lazy(() => import('@pages/DiscoverSeries.jsx'))
 const MyListPage = lazy(() => import('@pages/MyList.jsx'))
-const SignInPage = lazy(() => import('@/pages/SignIn.jsx'))
+const SignInPage = lazy(() => import('@pages/SignIn.jsx'))
 const SignUpPage = lazy(() => import('@pages/SignUp.jsx'))
 
 export const router = createBrowserRouter([
