@@ -1,4 +1,4 @@
-import { watchListActions } from '@store/watchlist-slice'
+import { watchListActions } from '@store/slices/watchlist-slice'
 
 export const fetchWatchListData = ({ user }) => {
 	return async dispatch => {

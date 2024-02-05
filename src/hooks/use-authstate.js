@@ -3,8 +3,8 @@ import { redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { auth } from '@/firebase.js'
-import { userActions } from '@store/user-slice.js'
-import { fetchWatchListData } from '@store/watchlist-actions.js'
+import { userActions } from '@store/slices/user-slice'
+import { fetchWatchListData } from '@store/actions/watchlist-actions'
 
 const useAuthState = () => {
 	const dispatch = useDispatch()

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { motion, AnimatePresence } from 'framer-motion'
 import { auth } from '@/firebase'
 import { signOut } from 'firebase/auth'
-import { userActions } from '@store/user-slice'
+import { userActions } from '@store/slices/user-slice'
 import { styled as styledMUI } from '@mui/system'
 
 import AppBar from '@mui/material/AppBar'

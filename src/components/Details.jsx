@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useDispatch, useSelector } from 'react-redux'
-import { watchListActions } from '@store/watchlist-slice'
+import { watchListActions } from '@store/slices/watchlist-slice'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'

@@ -4,7 +4,7 @@ import { useIdleTimer } from 'react-idle-timer'
 
 import { auth } from '@/firebase.js'
 import { signOut } from 'firebase/auth'
-import { userActions } from '@store/user-slice.js'
+import { userActions } from '@store/slices/user-slice'
 
 const useIdle = () => {
 	const dispatch = useDispatch()
