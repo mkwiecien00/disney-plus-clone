@@ -5,12 +5,11 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@utils/queryClient/queryClient'
 import { useSelector, useDispatch } from 'react-redux'
 import { sendWatchListData, fetchWatchListData } from '@store/watchlist-actions.js'
-import { useIdleTimer } from 'react-idle-timer'
+import useIdle from '@hooks/use-idle'
 
 import PreLoader from '@components/Layout/PreLoader.jsx'
 
 import { auth } from '@/firebase.js'
-import { signOut } from 'firebase/auth'
 import { userActions } from '@store/user-slice.js'
 
 let isInitial = true
@@ -19,6 +18,8 @@ const App = () => {
 	const [isLoading, setIsLoading] = useState(true)
 	const dispatch = useDispatch()
 	const watchlist = useSelector(state => state.watchList)
+
+	useIdle()
 
 	useEffect(() => {
 		auth.onAuthStateChanged(authUser => {
@@ -38,17 +39,6 @@ const App = () => {
 			}
 		})
 	}, [dispatch])
-
-	const onIdle = () => {
-		dispatch(userActions.signOutUser())
-		signOut(auth)
-		redirect('/disney-plus-clone/')
-	}
-
-	useIdleTimer({
-		onIdle,
-		timeout: 5 * (60 * 1000),
-	})
 
 	useEffect(() => {
 		if (isInitial) {
@@ -77,11 +67,8 @@ const App = () => {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			{isLoading ? (
-				<>
-					<PreLoader />
-				</>
-			) : (
+			{isLoading && <PreLoader />}
+			{!isLoading && (
 				<Suspense fallback={null}>
 					<RouterProvider router={router} />
 				</Suspense>

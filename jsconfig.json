@@ -7,6 +7,7 @@
 			"@screenshots/*": ["src/assets/screenshots/*"],
 			"@videos/*": ["src/assets/videos/*"],
 			"@components/*": ["src/components/*"],
+			"@hooks/*": ["src/hooks/*"],
 			"@pages/*": ["src/pages/*"],
 			"@store/*": ["src/store/*"],
 			"@utils/*": ["src/utils/*"]
