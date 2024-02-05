@@ -12,8 +12,8 @@ const CollectionResourcesPage = lazy(() => import('@components/CollectionResourc
 const DiscoverMoviesPage = lazy(() => import('@pages/DiscoverMovies.jsx'))
 const DiscoverSeriesPage = lazy(() => import('@pages/DiscoverSeries.jsx'))
 const MyListPage = lazy(() => import('@pages/MyList.jsx'))
-const SigninPage = lazy(() => import('@pages/Signin.jsx'))
-const SignupPage = lazy(() => import('@pages/Signup.jsx'))
+const SignInPage = lazy(() => import('@/pages/SignIn.jsx'))
+const SignUpPage = lazy(() => import('@pages/SignUp.jsx'))
 
 export const router = createBrowserRouter([
 	{
@@ -25,8 +25,8 @@ export const router = createBrowserRouter([
 			{
 				path: 'auth',
 				children: [
-					{ path: 'signin', element: <SigninPage /> },
-					{ path: 'signup', element: <SignupPage /> },
+					{ path: 'signin', element: <SignInPage /> },
+					{ path: 'signup', element: <SignUpPage /> },
 				],
 			},
 			{

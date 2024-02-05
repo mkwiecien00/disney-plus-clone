@@ -5,7 +5,7 @@ import { auth } from '@/firebase'
 import { MotionContainer } from '@components/UI/MotionContainer'
 import AuthenticationForm from '@components/AuthenticationForm'
 
-const SignupPage = () => {
+const SignUpPage = () => {
 	const navigate = useNavigate()
 	const [error, setError] = useState(null)
 	let errorText
@@ -38,4 +38,4 @@ const SignupPage = () => {
 	)
 }
 
-export default SignupPage
+export default SignUpPage
