@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from 'react'
-import { RouterProvider, redirect } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import { router } from '@utils/routes/BrowserRouter'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@utils/queryClient/queryClient'
