@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
 
-import { fetchDataFromQuery } from '@utils/http'
+import { fetchDataFromQuery } from '@/utils/http/fetchDataFromQuery'
 
 import Container from '@components/UI/Container'
 import { OpacityMotionContainer } from '@components/UI/MotionContainer'

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { fetchHomePageData } from '@utils/http'
+import { fetchHomePageData } from '@/utils/http/fetchHomePageData'
 import MovieCarousel from '@components/UI/MovieCarousel'
 
 const Movies = () => {

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { styled as styledMUI } from '@mui/system'
 
-import { fetchDetailsFromId } from '@utils/http'
+import { fetchDetailsFromId } from '@/utils/http/fetchDetailsFromId'
 import Container from '@components/UI/Container'
 import Loader from '@components/UI/Loader'
 import ErrorBlock from '@components/UI/ErrorBlock'

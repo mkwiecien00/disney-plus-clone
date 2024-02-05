@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { RouterProvider, createBrowserRouter, redirect } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
-import { queryClient } from '@utils/http.js'
+import { queryClient } from '@utils/queryClient/queryClient'
 import { useSelector, useDispatch } from 'react-redux'
 import { sendWatchListData, fetchWatchListData } from '@store/watchlist-actions.js'
 import { useIdleTimer } from 'react-idle-timer'
