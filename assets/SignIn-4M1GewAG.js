@@ -1,0 +1,1 @@
+import{j as n}from"./index-CRDHgjrp.js";import{M as i}from"./MotionContainer-ViNI996j.js";import{u as r,A as s}from"./use-authentication-lq1GL8DD.js";import"./motion-cGRW3ea0.js";import"./Container-Mwgt3Ipq.js";const c=()=>{const{signIn:o,error:t}=r();return n.jsx(i,{children:n.jsx(s,{mode:"signin",onSignin:o,error:t})})};export{c as default};
