@@ -47,7 +47,7 @@ const categoryOptions = {
 
 const DiscoverResource = ({ type }) => {
 	const storedCategory = localStorage.getItem(`selectedCategory_${type}`)
-	const [selectedCategory, setSelectedCategory] = useState(storedCategory || categoryOptions[type[0].id])
+	const [selectedCategory, setSelectedCategory] = useState(storedCategory || categoryOptions[type][0].id)
 	const [resourceList, setResourceList] = useState([])
 
 	const categorySelectHandler = event => {
