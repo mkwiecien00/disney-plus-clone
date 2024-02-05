@@ -168,7 +168,7 @@ const MainNavigation = () => {
 
 							<ProfileIconBox>
 								<UserName sx={{ display: { xs: 'none', md: 'flex' } }}>{user.userName}</UserName>
-								<Avatar alt='Profile Icon'>{user.userName ? user.userName.charAt(0).toUpperCase() : 'A'}</Avatar>
+								{user.userName && <Avatar alt='Profile Icon'>{user.userName.charAt(0).toUpperCase()}</Avatar>}
 								<LogoutLink to='/disney-plus-clone/auth/signin'>
 									<StyledButton variant='outlined' className='signout' onClick={signoutHandler}>
 										<LogoutRoundedIcon />

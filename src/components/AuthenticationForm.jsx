@@ -9,7 +9,7 @@ import Container from '@components/UI/Container'
 
 const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 	const isSignin = mode == 'signin'
-	const minPasswordLength = 10
+	const minPasswordLength = 6
 	const maxUserNameCharactersAmount = 10
 
 	const [email, setEmail] = useState('')

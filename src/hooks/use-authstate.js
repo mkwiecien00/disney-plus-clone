@@ -22,8 +22,6 @@ const useAuthState = () => {
 					dispatch(fetchWatchListData({ user: authUser.uid }))
 
 				redirect('/disney-plus-clone/')
-			} else {
-				console.log('User is not logged in.')
 			}
 		})
 	}, [dispatch])
