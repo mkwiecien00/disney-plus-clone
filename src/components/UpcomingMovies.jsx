@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
-import { fetchHomePageData } from '@util/http'
+import { fetchHomePageData } from '@utils/http'
 
 import Container from '@components/UI/Container'
 import GridContainer from '@components/UI/GridContainer'

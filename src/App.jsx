@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { RouterProvider, createBrowserRouter, redirect } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
-import { queryClient } from '@util/http.js'
+import { queryClient } from '@utils/http.js'
 import { useSelector, useDispatch } from 'react-redux'
 import { sendWatchListData, fetchWatchListData } from '@store/watchlist-actions.js'
 import { useIdleTimer } from 'react-idle-timer'
@@ -20,7 +20,7 @@ const SigninPage = lazy(() => import('@pages/Signin.jsx'))
 const SignupPage = lazy(() => import('@pages/Signup.jsx'))
 
 import PreLoader from '@components/Layout/PreLoader.jsx'
-import ProtectedRoutes from '@util/ProtectedRoutes.jsx'
+import ProtectedRoutes from '@utils/ProtectedRoutes.jsx'
 
 import { auth } from '@/firebase.js'
 import { signOut } from 'firebase/auth'

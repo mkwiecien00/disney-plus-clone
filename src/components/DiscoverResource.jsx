@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { PropTypes } from 'prop-types'
 
 import styled from 'styled-components'
-import { fetchListForCategory } from '@util/http'
+import { fetchListForCategory } from '@utils/http'
 
 import Container from '@components/UI/Container'
 import GridContainer from '@components/UI/GridContainer'

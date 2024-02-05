@@ -9,7 +9,7 @@
 			"@components/*": ["src/components/*"],
 			"@pages/*": ["src/pages/*"],
 			"@store/*": ["src/store/*"],
-			"@util/*": ["src/util/*"]
+			"@utils/*": ["src/utils/*"]
 		}
 	},
 	"exclude": ["node_modules"]
