@@ -10,7 +10,6 @@ import useAuthState from '@hooks/use-authstate'
 import useLocalStorageCleanup from '@hooks/use-cleanup'
 
 import PreLoader from '@components/layout/preloader/PreLoader'
-
 import { auth } from '@/firebase.js'
 
 let isInitial = true
