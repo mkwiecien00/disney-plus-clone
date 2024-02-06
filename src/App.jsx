@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { router } from '@utils/routes/BrowserRouter'
 import { QueryClientProvider } from '@tanstack/react-query'
@@ -46,11 +46,7 @@ const App = () => {
 	return (
 		<QueryClientProvider client={queryClient}>
 			{isLoading && <PreLoader />}
-			{!isLoading && (
-				<Suspense fallback={null}>
-					<RouterProvider router={router} />
-				</Suspense>
-			)}
+			{!isLoading && <RouterProvider router={router} />}
 		</QueryClientProvider>
 	)
 }

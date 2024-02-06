@@ -1,19 +1,18 @@
-import React, { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import ProtectedRoutes from '@utils/routes/ProtectedRoutes'
 
-const RootLayout = lazy(() => import('@pages/Root'))
-const ErrorPage = lazy(() => import('@pages/Error'))
-const HomePage = lazy(() => import('@pages/Home'))
-const MovieDetailsPage = lazy(() => import('@pages/MovieDetails'))
-const SeriesDetailsPage = lazy(() => import('@pages/SeriesDetails'))
-const SearchPage = lazy(() => import('@pages/Search'))
-const CollectionResourcesPage = lazy(() => import('@components/CollectionResources.jsx'))
-const DiscoverMoviesPage = lazy(() => import('@pages/DiscoverMovies.jsx'))
-const DiscoverSeriesPage = lazy(() => import('@pages/DiscoverSeries.jsx'))
-const MyListPage = lazy(() => import('@pages/MyList.jsx'))
-const SignInPage = lazy(() => import('@pages/SignIn.jsx'))
-const SignUpPage = lazy(() => import('@pages/SignUp.jsx'))
+import RootLayout from '@pages/Root'
+import ErrorPage from '@pages/Error'
+import HomePage from '@pages/Home'
+import MovieDetailsPage from '@pages/MovieDetails'
+import SeriesDetailsPage from '@pages/SeriesDetails'
+import SearchPage from '@pages/Search'
+import CollectionResourcesPage from '@components/CollectionResources'
+import DiscoverMoviesPage from '@pages/DiscoverMovies'
+import DiscoverSeriesPage from '@pages/DiscoverSeries'
+import MyListPage from '@pages/MyList'
+import SignInPage from '@pages/SignIn'
+import SignUpPage from '@pages/SignUp'
 
 export const router = createBrowserRouter([
 	{
