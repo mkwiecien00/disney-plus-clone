@@ -17,6 +17,7 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 	const [passwordError, setPasswordError] = useState('')
 	const [userName, setUserName] = useState('')
 	const [userNameError, setUserNameError] = useState('')
+	const [isFormSubmitted, setIsFormSubmitted] = useState(false)
 
 	useEffect(() => {
 		const storedSignInEmail = localStorage.getItem('signInEmail')
@@ -83,13 +84,18 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 				setPasswordError('')
 			}
 		}
+
+		setIsFormSubmitted(true)
 	}
 
 	useEffect(() => {
-		if (!userNameError && !passwordError && !isSignin) {
-			onSignup({ email, password, userName })
+		if (isFormSubmitted && !userNameError && !passwordError && !isSignin) {
+			if (email && password && userName) {
+				onSignup({ email, password, userName })
+			}
 		}
-	}, [userNameError, passwordError])
+		setIsFormSubmitted(false)
+	}, [userNameError, passwordError, email, password, userName, isSignin, isFormSubmitted])
 
 	return (
 		<StyledContainer>

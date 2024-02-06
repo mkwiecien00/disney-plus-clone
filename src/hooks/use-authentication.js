@@ -37,12 +37,12 @@ const useAuthentication = () => {
 			await updateProfile(auth.currentUser, { displayName: data.userName })
 
 			dispatch(
-                userActions.signInUser({
-                    uid: auth.currentUser.uid,
-                    email: auth.currentUser.email,
-                    userName: auth.currentUser.displayName,
-                })
-            )
+				userActions.signInUser({
+					uid: auth.currentUser.uid,
+					email: auth.currentUser.email,
+					userName: auth.currentUser.displayName,
+				})
+			)
 
 			navigate('/disney-plus-clone/')
 
