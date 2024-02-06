@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import { styled as styledMUI } from '@mui/system'
 import useNavigation from '@hooks/use-navigation'
-import { AppBar, Container, Toolbar, Box, Button } from '@mui/material'
+import { AppBar, Container, Toolbar, Box, Button, styled as styledMUI } from '@mui/material'
+
 import disneyAppLogo from '@images/disney-logo.svg'
-import MobileMenuContent from '@components/layout/navigation/mobile/MobileMenuContent'
-import DesktopMenuContent from '@components/layout/navigation/desktop/DesktopMenuContent'
-import ProfileContent from '@components/layout/navigation/profile/ProfileContent'
+import MobileMenuContent from '@components/layout/navigation/MobileMenuContent'
+import DesktopMenuContent from '@components/layout/navigation/DesktopMenuContent'
+import ProfileContent from '@components/layout/navigation/ProfileContent'
 
 const MainNavigation = () => {
 	const { anchorEl, setAnchorEl, handleCloseNavMenu, handleOpenNavMenu, user, signoutHandler } = useNavigation()

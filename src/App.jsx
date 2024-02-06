@@ -9,7 +9,7 @@ import useIdle from '@hooks/use-idle'
 import useAuthState from '@hooks/use-authstate'
 import useLocalStorageCleanup from '@hooks/use-cleanup'
 
-import PreLoader from '@components/layout/preloader/PreLoader.jsx'
+import PreLoader from '@components/layout/preloader/PreLoader'
 
 import { auth } from '@/firebase.js'
 
