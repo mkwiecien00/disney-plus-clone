@@ -1,34 +1,20 @@
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-
 import styled from 'styled-components'
 import Container from '@components/UI/Container'
 import { OpacityMotionContainer } from '@components/UI/MotionContainer'
 import GridContainer from '@components/UI/GridContainer'
 import Title from '@components/UI/Title'
-
-import { auth } from '@/firebase'
+import useWatchList from '@hooks/use-watchlist'
 
 const MyListPage = () => {
-	const watchList = useSelector(state => state.watchList)
-	const [resourceArray, setResourceArray] = useState([])
-
-	useEffect(() => {
-		const filteredResources = watchList.resources.filter(resource => {
-			return resource.userId === auth.currentUser.uid
-		})
-
-		setResourceArray(filteredResources)
-	}, [watchList.resources])
+	const resourceArray = useWatchList()
 
 	return (
 		<StyledContainer>
 			<Title>My List</Title>
 			<OpacityMotionContainer>
 				<Wrapper>
-					{resourceArray.length > 0 ? (
-						<GridContainer movies={resourceArray} />
-					) : (
+					{resourceArray.length > 0 && <GridContainer movies={resourceArray} />}
+					{resourceArray.length === 0 && (
 						<InfoParagraph>{`Your watch list is empty. Why don't you add something in here? 💫`}</InfoParagraph>
 					)}
 				</Wrapper>
