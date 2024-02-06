@@ -42,10 +42,10 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 
 		if (storedLastEnteredEmail && isSignin && !storedSignInEmail) {
 			setEmail(storedLastEnteredEmail)
-		}
 
-		if (storedLastEnteredEmail === 'test@test.com' && isSignin) {
-			setPassword('test123')
+			if (storedLastEnteredEmail === 'test@test.com') {
+				setPassword('test123')
+			}
 		}
 	}, [isSignin])
 
