@@ -6,10 +6,7 @@ import { menuItems } from '@utils/navigation/menu-items'
 
 const MobileMenuContent = ({ handleOpenNavMenu, handleCloseNavMenu, anchorEl, setAnchorEl }) => {
 	return (
-		<MobileMenuBox
-			sx={{
-				display: { xs: 'flex', md: 'none' },
-			}}>
+		<MobileMenuBox sx={{ display: { xs: 'flex', md: 'none' } }}>
 			<MobileMenuBoxIcon
 				aria-label='account of current user'
 				aria-controls='menu-appbar'
