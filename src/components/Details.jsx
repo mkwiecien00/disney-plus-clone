@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,44 +12,27 @@ import Container from '@components/ui/Container'
 import Loader from '@components/ui/Loader'
 import ErrorBlock from '@components/ui/ErrorBlock'
 import { MotionContainer } from '@components/ui/MotionContainer'
-import { OpacityMotionContainer } from '@components/ui/MotionContainer'
-import ReactPlayer from 'react-player'
 import ErrorPage from '@pages/Error'
 
-import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
-import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded'
+
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
-import AddRoundedIcon from '@mui/icons-material/AddRounded'
-import DoneRoundedIcon from '@mui/icons-material/DoneRounded'
 
 import { auth } from '../firebase'
 
-const Details = ({ type }) => {
-	useEffect(() => {
-		const scrollToTop = () => {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
-		}
+import VideoPlayer from '@components/VideoPlayer'
+import DetailBackgroundImage from '@components/ui/DetailBackgroundImage'
+import Controls from '@components/ui/Controls'
+import useVideo from '@hooks/use-video'
+import useScroll from '@hooks/use-scroll'
 
-		scrollToTop()
-	}, [])
+const Details = ({ type }) => {
+	const { videoIsVisible, videoHandler, closeVideoHandler } = useVideo()
+	useScroll()
 
 	const navigate = useNavigate()
 	const backToPreviousPageHandler = () => {
 		navigate(-1)
-	}
-
-	const [videoIsVisible, setVideoIsVisible] = useState(false)
-
-	const videoHandler = () => {
-		setVideoIsVisible(prevState => !prevState)
-	}
-
-	const closeVideoHandler = () => {
-		setVideoIsVisible(false)
 	}
 
 	const params = useParams()
@@ -145,32 +127,18 @@ const Details = ({ type }) => {
 			{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
 			{data && (
 				<>
-					<Background>
-						<img src={backdropUrl} alt={`Background image of ${data.title}`} />
-					</Background>
+					<DetailBackgroundImage backdropUrl={backdropUrl} title={data.title} />
 
 					<MotionContainer delay={0.5}>
 						<Wrapper>
 							<Logo>{logoUrl ? <img src={logoUrl} alt={`Logo image of ${data.title}`} /> : <h1>{data.title}</h1>}</Logo>
 
-							<Controls>
-								<StyledButton className='play' variant='contained' startIcon={<PlayArrowRoundedIcon />}>
-									PLAY
-								</StyledButton>
-								<StyledButton onClick={videoHandler} className='trailer' variant='outlined' startIcon={<PlayArrowRoundedIcon />}>
-									TRAILER
-								</StyledButton>
-
-								{isAddedToWatchList ? (
-									<StyledIconButton className='remove' variant='outlined' onClick={removeFromWatchListHandler}>
-										<DoneRoundedIcon />
-									</StyledIconButton>
-								) : (
-									<StyledIconButton className='add' variant='outlined' onClick={addToWatchListHandler}>
-										<AddRoundedIcon />
-									</StyledIconButton>
-								)}
-							</Controls>
+							<Controls
+								onVideoHandle={videoHandler}
+								isAddedToWatchList={isAddedToWatchList}
+								onRemove={removeFromWatchListHandler}
+								onAdd={addToWatchListHandler}
+							/>
 
 							<InfoParagraph>
 								{releaseYear} {numberOfSeasons && (numberOfSeasons > 1 ? `• ${numberOfSeasons} Seasons` : '• 1 Season')} • {genres}
@@ -183,16 +151,7 @@ const Details = ({ type }) => {
 						</Wrapper>
 					</MotionContainer>
 
-					{videoIsVisible && (
-						<VideoWrapper onClick={closeVideoHandler}>
-							<OpacityMotionContainer>
-								<>
-									{videoUrl && <ReactPlayer width='70vw' height='50vh' url={videoUrl} controls={true} />}
-									{!videoUrl && <p>Unfortunately no trailer has been provided for this resource.</p>}
-								</>
-							</OpacityMotionContainer>
-						</VideoWrapper>
-					)}
+					{videoIsVisible && <VideoPlayer onClick={closeVideoHandler} videoUrl={videoUrl} />}
 				</>
 			)}
 			{!data && <ErrorPage />}
@@ -212,22 +171,6 @@ const StyledContainer = styled(Container)`
 	justify-content: center;
 	align-content: center;
 	text-align: center;
-`
-
-const Background = styled.div`
-	position: fixed;
-	right: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0.5;
-	z-index: -1;
-
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
 `
 
 const Wrapper = styled.section`
@@ -275,49 +218,6 @@ const Logo = styled.div`
 	}
 `
 
-const Controls = styled.div`
-	display: flex;
-	gap: 10px;
-	margin-bottom: 10px;
-`
-
-const StyledButton = styledMUI(Button)({
-	fontWeight: 'normal',
-	fontSize: '12px',
-	transition: 'color 0.3s, background-color 0.3s, border 0.3s',
-
-	'@media (min-width: 800px)': {
-		fontSize: '14px',
-	},
-
-	'@media (min-width: 1000px)': {
-		fontSize: '16px',
-	},
-
-	'&.play': {
-		color: '#000',
-		backgroundColor: '#F9F6EE',
-		width: '100px',
-
-		'&:hover': {
-			color: '#F9F6EE',
-			backgroundColor: 'rgba(0, 0, 0, 0.5)',
-		},
-	},
-
-	'&.trailer': {
-		color: '#F9F6EE',
-		backgroundColor: 'rgba(0, 0, 0, 0.6)',
-		border: 'transparent',
-		width: '150px',
-
-		'&:hover': {
-			backgroundColor: 'rgb(0, 0, 0)',
-			border: 'rgb(0, 0, 0)',
-		},
-	},
-})
-
 const StyledIconButton = styledMUI(IconButton)({
 	color: '#F9F6EE',
 	backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -359,17 +259,4 @@ const DescriptionParagraph = styled.p`
 		font-size: 18px;
 		margin-right: 200px;
 	}
-`
-
-const VideoWrapper = styled.div`
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.8);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1;
 `
