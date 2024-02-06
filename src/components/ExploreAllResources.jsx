@@ -8,18 +8,19 @@ import GridContainer from '@components/UI/GridContainer'
 import Loader from '@components/UI/Loader'
 import ErrorBlock from '@components/UI/ErrorBlock'
 
-const UpcomingMovies = () => {
+const ExploreAllResources = () => {
 	const { data, isPending, isError } = useQuery({
 		queryKey: ['homepage-data'],
 		queryFn: ({ signal }) => fetchHomePageData({ signal }),
 	})
 
-	let upcomingMovies = []
+	let allMovies = []
 
 	if (data) {
-		const upcomingMoviesData = data.find(item => item.category === 'upcoming-movies')
-		if (upcomingMoviesData) {
-			upcomingMovies = upcomingMoviesData.data.results || []
+		for (const category of data) {
+			if (category.data && category.data.results) {
+				allMovies.push(...category.data.results)
+			}
 		}
 	}
 
@@ -27,12 +28,12 @@ const UpcomingMovies = () => {
 		<StyledContainer>
 			{isPending && <Loader />}
 			{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
-			{data && <GridContainer movies={upcomingMovies} title='Explore' path='movie' />}
+			{data && <GridContainer movies={allMovies} title='Explore' path='movie' />}
 		</StyledContainer>
 	)
 }
 
-export default UpcomingMovies
+export default ExploreAllResources
 
 const StyledContainer = styled(Container)`
 	padding-top: 10px;

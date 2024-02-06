@@ -12,7 +12,7 @@ import SearchInput from '@components/UI/SearchInput'
 import Title from '@components/UI/Title'
 import Loader from '@components/UI/Loader'
 import ErrorBlock from '@components/UI/ErrorBlock'
-import UpcomingMovies from '@components/UpcomingMovies'
+import ExploreAllResources from '@components/ExploreAllResources'
 
 const SearchPage = () => {
 	const storedQuery = localStorage.getItem('searchQuery')
@@ -68,7 +68,7 @@ const SearchPage = () => {
 				)}
 				{isInitial && (
 					<OpacityMotionContainer>
-						<UpcomingMovies />
+						<ExploreAllResources />
 					</OpacityMotionContainer>
 				)}
 			</Wrapper>
