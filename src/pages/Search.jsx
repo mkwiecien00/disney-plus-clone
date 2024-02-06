@@ -56,13 +56,12 @@ const SearchPage = () => {
 							<Title>Search results for {query}</Title>
 							{isLoading && <Loader />}
 							{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
-							{data?.length > 0 ? (
+							{data?.length > 0 && (
 								<OpacityMotionContainer>
 									<GridContainer movies={data} />
 								</OpacityMotionContainer>
-							) : (
-								!isLoading && <p>No movie or series containing your search term was found.</p>
 							)}
+							{data?.length === 0 && !isLoading && <p>No movie or series containing your search term was found.</p>}
 						</>
 					</OpacityMotionContainer>
 				)}
