@@ -16,8 +16,8 @@ import collectionVideoFour from '@videos/starwars.mp4'
 import collectionVideoFive from '@videos/national-geographic.mp4'
 import collectionVideoSix from '@videos/star.mp4'
 
-import { MotionContainer } from '@components/UI/MotionContainer'
-import ItemContainer from '@components/UI/ItemContainer'
+import { MotionContainer } from '@components/ui/MotionContainer'
+import ItemContainer from '@components/ui/ItemContainer'
 
 const collectionItems = [
 	{ img: collectionImgOne, video: collectionVideoOne, title: 'Disney collection', query: 'disney' },

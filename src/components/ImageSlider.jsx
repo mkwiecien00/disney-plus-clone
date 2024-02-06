@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Carousel from '@components/UI/Carousel'
+import Carousel from '@components/ui/Carousel'
 
 import imgSlideOne from '@images/slides/imgslide-1.jpg'
 import imgSlideTwo from '@images/slides/imgslide-2.jpg'
@@ -12,8 +12,8 @@ import overlayImgTwo from '@images/overlays/imgslide-2-overlay.jpg'
 import overlayImgThree from '@images/overlays/imgslide-3-overlay.jpg'
 import overlayImgFour from '@images/overlays/imgslide-4-overlay.jpg'
 
-import { MotionContainer } from '@components/UI/MotionContainer'
-import ItemContainer from '@components/UI/ItemContainer'
+import { MotionContainer } from '@components/ui/MotionContainer'
+import ItemContainer from '@components/ui/ItemContainer'
 
 const slideImages = [
 	{ img: imgSlideOne, overlay: overlayImgOne, title: 'Home Alone 2: Lost in New York', path: 'movie', id: '772' },

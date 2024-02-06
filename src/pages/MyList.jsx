@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import Container from '@components/UI/Container'
-import { OpacityMotionContainer } from '@components/UI/MotionContainer'
-import GridContainer from '@components/UI/GridContainer'
-import Title from '@components/UI/Title'
+import Container from '@components/ui/Container'
+import { OpacityMotionContainer } from '@components/ui/MotionContainer'
+import GridContainer from '@components/ui/GridContainer'
+import Title from '@components/ui/Title'
 import useWatchList from '@hooks/use-watchlist'
 
 const MyListPage = () => {

@@ -3,10 +3,10 @@ import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
 import { fetchHomePageData } from '@/utils/http/fetchHomePageData'
 
-import Container from '@components/UI/Container'
-import GridContainer from '@components/UI/GridContainer'
-import Loader from '@components/UI/Loader'
-import ErrorBlock from '@components/UI/ErrorBlock'
+import Container from '@components/ui/Container'
+import GridContainer from '@components/ui/GridContainer'
+import Loader from '@components/ui/Loader'
+import ErrorBlock from '@components/ui/ErrorBlock'
 
 const ExploreAllResources = () => {
 	const { data, isPending, isError } = useQuery({

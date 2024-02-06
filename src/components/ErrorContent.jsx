@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { styled as styledMUI } from '@mui/system'
 
-import { MotionContainer } from '@components/UI/MotionContainer'
+import { MotionContainer } from '@components/ui/MotionContainer'
 import ErrorImg from '@images/error-img.png'
 import Button from '@mui/material/Button'
 

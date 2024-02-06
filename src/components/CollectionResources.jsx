@@ -4,11 +4,11 @@ import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
 import { fetchCollectionResources } from '@/utils/http/fetchCollectionResources'
 
-import Container from '@components/UI/Container'
-import GridContainer from '@components/UI/GridContainer'
-import { OpacityMotionContainer } from '@components/UI/MotionContainer'
-import Loader from '@components/UI/Loader'
-import ErrorBlock from '@components/UI/ErrorBlock'
+import Container from '@components/ui/Container'
+import GridContainer from '@components/ui/GridContainer'
+import { OpacityMotionContainer } from '@components/ui/MotionContainer'
+import Loader from '@components/ui/Loader'
+import ErrorBlock from '@components/ui/ErrorBlock'
 
 const collectionInfo = {
 	disney: {

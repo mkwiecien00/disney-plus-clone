@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-import Carousel from '@components/UI/Carousel'
+import Carousel from '@components/ui/Carousel'
 
-import Title from '@components/UI/Title'
-import Loader from '@components/UI/Loader'
-import ErrorBlock from '@components/UI/ErrorBlock'
-import { MotionContainer } from '@components/UI/MotionContainer'
-import ItemContainer from '@components/UI/ItemContainer'
+import Title from '@components/ui/Title'
+import Loader from '@components/ui/Loader'
+import ErrorBlock from '@components/ui/ErrorBlock'
+import { MotionContainer } from '@components/ui/MotionContainer'
+import ItemContainer from '@components/ui/ItemContainer'
 
 const MovieCarousel = ({ data, isPending, isError }) => {
 	const [slidesToShow, setSlidesToShow] = useState(2)

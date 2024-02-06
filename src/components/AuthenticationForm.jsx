@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import disneyAppLogo from '@images/disney-logo-color.svg'
-import Container from '@components/UI/Container'
+import Container from '@components/ui/Container'
 
 const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 	const isSignin = mode == 'signin'

@@ -4,14 +4,13 @@ import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
 
 import { fetchDataFromQuery } from '@/utils/http/fetchDataFromQuery'
-
-import Container from '@components/UI/Container'
-import { OpacityMotionContainer } from '@components/UI/MotionContainer'
-import GridContainer from '@components/UI/GridContainer'
-import SearchInput from '@components/UI/SearchInput'
-import Title from '@components/UI/Title'
-import Loader from '@components/UI/Loader'
-import ErrorBlock from '@components/UI/ErrorBlock'
+import Container from '@components/ui/Container'
+import { OpacityMotionContainer } from '@components/ui/MotionContainer'
+import GridContainer from '@components/ui/GridContainer'
+import SearchInput from '@components/ui/SearchInput'
+import Title from '@components/ui/Title'
+import Loader from '@components/ui/Loader'
+import ErrorBlock from '@components/ui/ErrorBlock'
 import ExploreAllResources from '@components/ExploreAllResources'
 
 const SearchPage = () => {
