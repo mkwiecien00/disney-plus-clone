@@ -5,13 +5,10 @@ import styled from 'styled-components'
 
 import { fetchListForCategory } from '@/utils/http/fetchListForCategory'
 import Container from '@components/ui/Container'
-import GridContainer from '@components/ui/GridContainer'
-import { OpacityMotionContainer } from '@components/ui/MotionContainer'
-import Loader from '@components/ui/Loader'
-import ErrorBlock from '@components/ui/ErrorBlock'
 import { categoryOptions } from '@utils/resources/category-options'
 import CategorySelector from '@components/ui/CategorySelector'
 import useCategorySelection from '@hooks/use-categoryselection'
+import ResourceContent from '@components/ResourceContent'
 
 const DiscoverResource = ({ type }) => {
 	const { selectedCategory, categorySelectHandler } = useCategorySelection(type, categoryOptions[type][0].id)
@@ -36,16 +33,7 @@ const DiscoverResource = ({ type }) => {
 				onChange={categorySelectHandler}
 				categoryOptions={categoryOptions}
 			/>
-			<>
-				{isPending && <Loader />}
-				{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
-				{isSuccess && !data.length && <p>No data available for the selected category.</p>}
-				{isSuccess && data.length > 0 && (
-					<OpacityMotionContainer>
-						<GridContainer movies={resourceList} path={type} />
-					</OpacityMotionContainer>
-				)}
-			</>
+			<ResourceContent isPending={isPending} isError={isError} isSuccess={isSuccess} data={data} resourceList={resourceList} type={type} />
 		</StyledContainer>
 	)
 }
