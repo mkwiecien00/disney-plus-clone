@@ -65,11 +65,13 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 		e.preventDefault()
 
 		if (isSignin) {
-			onSignin({ email: email, password: password })
-		} else {
+			onSignin({ email, password })
+		}
+
+		if (!isSignin) {
 			if (userName.trim() === '') {
 				setUserNameError('Username cannot be empty.')
-			} else if (userName.length > maxUserNameCharactersAmount) {
+			} else if (userName.trim().length > maxUserNameCharactersAmount) {
 				setUserNameError('Username cannot be longer than 10 characters.')
 			} else {
 				setUserNameError('')
@@ -80,12 +82,14 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 			} else {
 				setPasswordError('')
 			}
-
-			if (!userNameError && !passwordError) {
-				onSignup({ email: email, password: password, userName: userName })
-			}
 		}
 	}
+
+	useEffect(() => {
+		if (!userNameError && !passwordError && !isSignin) {
+			onSignup({ email, password, userName })
+		}
+	}, [userNameError, passwordError])
 
 	return (
 		<StyledContainer>
