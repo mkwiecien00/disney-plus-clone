@@ -1,101 +1,26 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
 
 import disneyAppLogo from '@images/disney-logo-color.svg'
 import Container from '@components/ui/Container'
+import useCredentials from '@hooks/use-credentials'
+import AuthenticationInfo from '@components/ui/AuthenticationInfo'
+import AuthenticationInputBox from '@components/ui/AuthenticationInputBox'
 
 const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
-	const isSignin = mode == 'signin'
-	const minPasswordLength = 6
-	const maxUserNameCharactersAmount = 10
-
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [passwordError, setPasswordError] = useState('')
-	const [userName, setUserName] = useState('')
-	const [userNameError, setUserNameError] = useState('')
-	const [isFormSubmitted, setIsFormSubmitted] = useState(false)
-
-	useEffect(() => {
-		const storedSignInEmail = localStorage.getItem('signInEmail')
-		const storedSignUpEmail = localStorage.getItem('signUpEmail')
-		const storedLastEnteredEmail = localStorage.getItem('lastEnteredEmail')
-
-		if (!storedSignInEmail & !storedLastEnteredEmail & !storedSignUpEmail & isSignin) {
-			setEmail('test@test.com')
-			setPassword('test123')
-		}
-
-		if (storedSignInEmail && isSignin) {
-			setEmail(storedSignInEmail)
-		}
-
-		if (storedSignUpEmail && !isSignin) {
-			setEmail(storedSignUpEmail)
-		}
-
-		if (storedLastEnteredEmail && isSignin && storedSignInEmail) {
-			setEmail(storedSignInEmail)
-		}
-
-		if (storedLastEnteredEmail && isSignin && !storedSignInEmail) {
-			setEmail(storedLastEnteredEmail)
-
-			if (storedLastEnteredEmail === 'test@test.com') {
-				setPassword('test123')
-			}
-		}
-	}, [isSignin])
-
-	const emailChangeHandler = e => {
-		setEmail(e.target.value)
-	}
-
-	const passwordChangeHandler = e => {
-		setPassword(e.target.value)
-	}
-
-	const userNameChangeHandler = e => {
-		setUserName(e.target.value)
-	}
-
-	const submitHandler = e => {
-		e.preventDefault()
-
-		if (isSignin) {
-			onSignin({ email, password })
-		}
-
-		if (!isSignin) {
-			if (userName.trim() === '') {
-				setUserNameError('Username cannot be empty.')
-			} else if (userName.trim().length > maxUserNameCharactersAmount) {
-				setUserNameError('Username cannot be longer than 10 characters.')
-			} else {
-				setUserNameError('')
-			}
-
-			if (password.length < minPasswordLength) {
-				setPasswordError('Password must be at least 6 characters long.')
-			} else {
-				setPasswordError('')
-			}
-		}
-
-		setIsFormSubmitted(true)
-	}
-
-	useEffect(() => {
-		if (isFormSubmitted && !userNameError && !passwordError && !isSignin) {
-			if (email && password && userName) {
-				onSignup({ email, password, userName })
-			}
-		}
-		setIsFormSubmitted(false)
-	}, [userNameError, passwordError, email, password, userName, isSignin, isFormSubmitted])
+	const {
+		email,
+		password,
+		passwordError,
+		userName,
+		userNameError,
+		isSignin,
+		emailChangeHandler,
+		passwordChangeHandler,
+		userNameChangeHandler,
+		submitHandler,
+	} = useCredentials({ mode, onSignin, onSignup })
 
 	return (
 		<StyledContainer>
@@ -103,36 +28,22 @@ const AuthenticationForm = ({ mode, onSignin, onSignup, error }) => {
 				<Logo src={disneyAppLogo} alt='Logo of Disney+ App' />
 				<form onSubmit={submitHandler}>
 					<FormHeader>{isSignin ? 'Sign in' : 'Sign up'}</FormHeader>
-					<InputBox>
-						{!isSignin && (
-							<div>
-								<InputField type='name' name='username' placeholder='Username' value={userName} onChange={userNameChangeHandler} required />
-								{userNameError ? <Error>{userNameError}</Error> : ''}
-							</div>
-						)}
-						<InputField type='email' name='email' placeholder='Email' value={email} onChange={emailChangeHandler} required />
-						<div>
-							<InputField
-								type='password'
-								name='password'
-								placeholder='Password'
-								value={password}
-								onChange={passwordChangeHandler}
-								required
-							/>
-							{passwordError ? <Error>{passwordError}</Error> : ''}
-							{error ? <Error>{error}</Error> : ''}
-						</div>
-					</InputBox>
+					<AuthenticationInputBox
+						isSignin={isSignin}
+						userName={userName}
+						userNameChangeHandler={userNameChangeHandler}
+						userNameError={userNameError}
+						email={email}
+						emailChangeHandler={emailChangeHandler}
+						password={password}
+						passwordChangeHandler={passwordChangeHandler}
+						passwordError={passwordError}
+						error={error}
+					/>
 					<SubmitButton type='submit'>{isSignin ? 'Sign in' : 'Sign up'}</SubmitButton>
 				</form>
 			</AuthenticationBox>
-			<InfoText>
-				{isSignin ? 'New to Disney Plus?' : 'Already on Disney Plus?'}
-				<Link to={`${isSignin ? '/disney-plus-clone/auth/signup' : '/disney-plus-clone/auth/signin'}`}>
-					<span>{isSignin ? 'Sign up now' : 'Sign in'}</span>
-				</Link>
-			</InfoText>
+			<AuthenticationInfo isSignin={isSignin} />
 		</StyledContainer>
 	)
 }
@@ -226,22 +137,6 @@ const SubmitButton = styled.button`
 
 	@media (min-width: 1000px) {
 		height: 40px;
-		font-size: 15px;
-	}
-`
-
-const InfoText = styled.p`
-	color: rgba(255, 255, 255, 0.7);
-	padding: 5px;
-	font-size: 13px;
-
-	span {
-		color: white;
-		margin-left: 5px;
-		font-weight: bold;
-	}
-
-	@media (min-width: 1000px) {
 		font-size: 15px;
 	}
 `

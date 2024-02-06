@@ -18,7 +18,7 @@ import DetailLogo from '@components/ui/DetailLogo'
 import Controls from '@components/ui/Controls'
 import DetailParagraph from '@components/ui/DetailParagraph'
 import DetailDescription from '@components/ui/DetailDescription'
-import BackButton from '@components/BackButton'
+import BackButton from '@components/ui/BackButton'
 import VideoPlayer from '@components/VideoPlayer'
 import ErrorPage from '@pages/Error'
 
