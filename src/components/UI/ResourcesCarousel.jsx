@@ -11,7 +11,7 @@ import ErrorBlock from '@components/ui/ErrorBlock'
 import { MotionContainer } from '@components/ui/MotionContainer'
 import ItemContainer from '@components/ui/ItemContainer'
 
-const MovieCarousel = ({ data, isPending, isError }) => {
+const ResourcesCarousel = ({ data, isPending, isError }) => {
 	const [slidesToShow, setSlidesToShow] = useState(2)
 
 	useEffect(() => {
@@ -63,7 +63,7 @@ const MovieCarousel = ({ data, isPending, isError }) => {
 							return (
 								<div key={category.category}>
 									<StyledTitle>{category.title}</StyledTitle>
-									{category.data ? (
+									{category.data && (
 										<StyledCarousel additionalSettings={sliderSettings}>
 											{category.data.results.map((item, index) => (
 												<Link to={`/disney-plus-clone/${category.type}/${item.id}`} key={index}>
@@ -73,9 +73,8 @@ const MovieCarousel = ({ data, isPending, isError }) => {
 												</Link>
 											))}
 										</StyledCarousel>
-									) : (
-										<ErrorBlock message={`Failed to fetch ${category.title} data, please try again later.`} />
 									)}
+									{!category.data && <ErrorBlock message={`Failed to fetch ${category.title} data, please try again later.`} />}
 								</div>
 							)
 						})}
@@ -85,13 +84,13 @@ const MovieCarousel = ({ data, isPending, isError }) => {
 	)
 }
 
-MovieCarousel.propTypes = {
+ResourcesCarousel.propTypes = {
 	data: PropTypes.array,
 	isPending: PropTypes.bool,
 	isError: PropTypes.bool,
 }
 
-export default MovieCarousel
+export default ResourcesCarousel
 
 const Wrapper = styled.section`
 	margin: 60px 0 10px;

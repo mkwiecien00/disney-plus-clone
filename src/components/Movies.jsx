@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { fetchHomePageData } from '@/utils/http/fetchHomePageData'
-import MovieCarousel from '@components/ui/MovieCarousel'
+import ResourcesCarousel from '@components/ui/ResourcesCarousel'
 
 const Movies = () => {
 	const { data, isPending, isError } = useQuery({
@@ -9,7 +9,7 @@ const Movies = () => {
 		queryFn: ({ signal }) => fetchHomePageData({ signal }),
 	})
 
-	return <MovieCarousel data={data} isPending={isPending} isError={isError} />
+	return <ResourcesCarousel data={data} isPending={isPending} isError={isError} />
 }
 
 export default Movies
