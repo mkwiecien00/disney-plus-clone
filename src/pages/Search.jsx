@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
 
-import { fetchDataFromQuery } from '@/utils/http/fetchDataFromQuery'
+import { fetchDataFromQuery } from '@utils/http/fetchDataFromQuery'
 import Container from '@components/ui/Container'
 import { OpacityMotionContainer } from '@components/ui/MotionContainer'
 import GridContainer from '@components/ui/GridContainer'
@@ -12,38 +12,16 @@ import Title from '@components/ui/Title'
 import Loader from '@components/ui/Loader'
 import ErrorBlock from '@components/ui/ErrorBlock'
 import ExploreAllResources from '@components/ExploreAllResources'
+import useSearchQuery from '@hooks/use-searchquery'
 
 const SearchPage = () => {
-	const storedQuery = localStorage.getItem('searchQuery')
-	const [query, setQuery] = useState(storedQuery || '')
-	const [apiQuery, setApiQuery] = useState(storedQuery || '')
-	const [isInitial, setIsInitial] = useState(true)
-	const queryIsValid = query.trim().length > 0
-
-	useEffect(() => {
-		localStorage.setItem('searchQuery', query)
-
-		if (queryIsValid) {
-			const settingApiQuery = setTimeout(() => {
-				setIsInitial(false)
-				setApiQuery(query.trim())
-			}, 1000)
-
-			return () => clearTimeout(settingApiQuery)
-		} else {
-			setIsInitial(true)
-		}
-	}, [query, queryIsValid])
+	const { query, apiQuery, isInitial, queryIsValid, onChangeHandler } = useSearchQuery()
 
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ['search-data', apiQuery],
 		queryFn: ({ signal }) => fetchDataFromQuery({ signal, query: apiQuery }),
 		enabled: !isInitial && queryIsValid,
 	})
-
-	const onChangeHandler = e => {
-		setQuery(e.target.value)
-	}
 
 	return (
 		<StyledContainer>
