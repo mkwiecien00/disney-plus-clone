@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import ProtectedRoutes from '@utils/routes/ProtectedRoutes'
+import { ProtectedRoutes } from '@utils/routes/ProtectedRoutes'
 
 import RootLayout from '@pages/Root'
 import ErrorPage from '@pages/Error'
