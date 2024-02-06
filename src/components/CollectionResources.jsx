@@ -3,14 +3,13 @@ import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
 import { fetchCollectionResources } from '@utils/http/fetchCollectionResources'
+import { collectionInfo } from '@utils/resources/collection-info'
 
 import Container from '@components/ui/Container'
-import GridContainer from '@components/ui/GridContainer'
 import { OpacityMotionContainer } from '@components/ui/MotionContainer'
+import GridContainer from '@components/ui/GridContainer'
 import Loader from '@components/ui/Loader'
 import ErrorBlock from '@components/ui/ErrorBlock'
-
-import { collectionInfo } from '@utils/resources/collection-info'
 
 const CollectionResourcesPage = () => {
 	const params = useParams()
