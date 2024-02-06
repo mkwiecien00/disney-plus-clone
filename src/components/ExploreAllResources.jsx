@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
 import { fetchHomePageData } from '@/utils/http/fetchHomePageData'
 
+import { OpacityMotionContainer } from '@components/ui/MotionContainer'
 import Container from '@components/ui/Container'
 import GridContainer from '@components/ui/GridContainer'
 import Loader from '@components/ui/Loader'
@@ -25,11 +26,13 @@ const ExploreAllResources = () => {
 	}
 
 	return (
-		<StyledContainer>
-			{isPending && <Loader />}
-			{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
-			{data && <GridContainer movies={allMovies} title='Explore' path='movie' />}
-		</StyledContainer>
+		<OpacityMotionContainer>
+			<StyledContainer>
+				{isPending && <Loader />}
+				{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
+				{data && <GridContainer movies={allMovies} title='Explore' path='movie' />}
+			</StyledContainer>
+		</OpacityMotionContainer>
 	)
 }
 

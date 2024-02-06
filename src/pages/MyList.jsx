@@ -1,9 +1,10 @@
+import useWatchList from '@hooks/use-watchlist'
+
 import styled from 'styled-components'
 import Container from '@components/ui/Container'
 import { OpacityMotionContainer } from '@components/ui/MotionContainer'
 import GridContainer from '@components/ui/GridContainer'
 import Title from '@components/ui/Title'
-import useWatchList from '@hooks/use-watchlist'
 
 const MyListPage = () => {
 	const resourceArray = useWatchList()

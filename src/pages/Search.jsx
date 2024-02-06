@@ -1,18 +1,12 @@
-import { useState, useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import useSearchQuery from '@hooks/use-searchquery'
+import { fetchDataFromQuery } from '@utils/http/fetchDataFromQuery'
 
 import styled from 'styled-components'
-
-import { fetchDataFromQuery } from '@utils/http/fetchDataFromQuery'
 import Container from '@components/ui/Container'
-import { OpacityMotionContainer } from '@components/ui/MotionContainer'
-import GridContainer from '@components/ui/GridContainer'
 import SearchInput from '@components/ui/SearchInput'
-import Title from '@components/ui/Title'
-import Loader from '@components/ui/Loader'
-import ErrorBlock from '@components/ui/ErrorBlock'
+import SearchResults from '@components/SearchResults'
 import ExploreAllResources from '@components/ExploreAllResources'
-import useSearchQuery from '@hooks/use-searchquery'
 
 const SearchPage = () => {
 	const { query, apiQuery, isInitial, queryIsValid, onChangeHandler } = useSearchQuery()
@@ -27,26 +21,8 @@ const SearchPage = () => {
 		<StyledContainer>
 			<SearchInput onChange={onChangeHandler} query={query} />
 			<Wrapper>
-				{!isInitial && (
-					<OpacityMotionContainer>
-						<>
-							<Title>Search results for {query}</Title>
-							{isLoading && <Loader />}
-							{isError && <ErrorBlock message='Something went wrong, please try again later.' />}
-							{data?.length > 0 && (
-								<OpacityMotionContainer>
-									<GridContainer movies={data} />
-								</OpacityMotionContainer>
-							)}
-							{data?.length === 0 && !isLoading && <p>No movie or series containing your search term was found.</p>}
-						</>
-					</OpacityMotionContainer>
-				)}
-				{isInitial && (
-					<OpacityMotionContainer>
-						<ExploreAllResources />
-					</OpacityMotionContainer>
-				)}
+				{!isInitial && <SearchResults query={query} data={data} isLoading={isLoading} isError={isError} />}
+				{isInitial && <ExploreAllResources />}
 			</Wrapper>
 		</StyledContainer>
 	)
