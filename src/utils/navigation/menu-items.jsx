@@ -9,6 +9,6 @@ export const menuItems = [
 	{ text: 'Home', path: '/disney-plus-clone/', icon: <HomeOutlinedIcon /> },
 	{ text: 'Search', path: '/disney-plus-clone/search', icon: <SearchIcon /> },
 	{ text: 'My List', path: '/disney-plus-clone/mylist', icon: <PlaylistAddIcon /> },
-	{ text: 'Movies', path: '/disney-plus-clone/discover/movies', icon: <LocalMoviesOutlinedIcon /> },
-	{ text: 'Series', path: '/disney-plus-clone/discover/series', icon: <MovieFilterOutlinedIcon /> },
+	{ text: 'Movies', path: '/disney-plus-clone/movie', icon: <LocalMoviesOutlinedIcon /> },
+	{ text: 'Series', path: '/disney-plus-clone/series', icon: <MovieFilterOutlinedIcon /> },
 ]

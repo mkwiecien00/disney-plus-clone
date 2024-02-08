@@ -23,7 +23,7 @@ const useNavigation = () => {
 			localStorage.removeItem('searchQuery')
 		}
 
-		if (!location.pathname.includes('/disney-plus-clone/discover/movies') && !location.pathname.includes('/disney-plus-clone/movie')) {
+		if (!location.pathname.includes('/disney-plus-clone/movie')) {
 			Object.keys(localStorage).forEach(key => {
 				if (key.includes('selectedCategory_movie')) {
 					localStorage.removeItem(key)
@@ -31,7 +31,7 @@ const useNavigation = () => {
 			})
 		}
 
-		if (!location.pathname.includes('/disney-plus-clone/discover/series') && !location.pathname.includes('/disney-plus-clone/series')) {
+		if (!location.pathname.includes('/disney-plus-clone/series')) {
 			Object.keys(localStorage).forEach(key => {
 				if (key.includes('selectedCategory_series')) {
 					localStorage.removeItem(key)

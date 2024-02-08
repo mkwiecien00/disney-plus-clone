@@ -19,7 +19,7 @@ const ExploreAllResources = () => {
 
 	if (data) {
 		for (const category of data) {
-			if (category.data && category.data.results) {
+			if (category.data && category.data.results && category.type === 'movie') {
 				allMovies.push(...category.data.results)
 			}
 		}

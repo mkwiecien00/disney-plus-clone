@@ -27,12 +27,18 @@ export const router = createBrowserRouter([
 				element: <ProtectedRoutes />,
 				children: [
 					{
-						path: 'movie/:id',
-						element: <MovieDetailsPage />,
+						path: 'movie',
+						children: [
+							{ index: true, element: <DiscoverMoviesPage /> },
+							{ path: ':id', element: <MovieDetailsPage /> },
+						],
 					},
 					{
-						path: 'series/:id',
-						element: <SeriesDetailsPage />,
+						path: 'series',
+						children: [
+							{ index: true, element: <DiscoverSeriesPage /> },
+							{ path: ':id', element: <SeriesDetailsPage /> },
+						],
 					},
 					{
 						path: 'search',
@@ -42,13 +48,7 @@ export const router = createBrowserRouter([
 						path: 'collection/:id',
 						element: <CollectionResourcesPage />,
 					},
-					{
-						path: 'discover',
-						children: [
-							{ path: 'movies', element: <DiscoverMoviesPage /> },
-							{ path: 'series', element: <DiscoverSeriesPage /> },
-						],
-					},
+
 					{
 						path: 'mylist',
 						element: <MyListPage />,
