@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
-import { fetchCollectionResources } from '@utils/http/fetchCollectionResources'
+import { fetchCollectionResources } from '@utils/http/fetch-collection-resources'
 import { collectionInfo } from '@utils/resources/collection-info'
 
 import Container from '@components/ui/Container'

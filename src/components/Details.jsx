@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { fetchDetailsFromId } from '@utils/http/fetchDetailsFromId'
+import { fetchDetailsFromId } from '@utils/http/fetch-details-from-id'
 import useScroll from '@hooks/use-scroll'
 import { detailsData } from '@utils/details/details-data'
 import useDetail from '@hooks/use-detail'

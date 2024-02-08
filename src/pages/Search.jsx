@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import useSearchQuery from '@hooks/use-searchquery'
-import { fetchDataFromQuery } from '@utils/http/fetchDataFromQuery'
+import { fetchDataFromQuery } from '@utils/http/fetch-data-from-query'
 
 import styled from 'styled-components'
 import Container from '@components/ui/Container'

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import styled from 'styled-components'
-import { fetchHomePageData } from '@/utils/http/fetchHomePageData'
+import { fetchHomePageData } from '@utils/http/fetch-homepage-data'
 
 import { OpacityMotionContainer } from '@components/ui/MotionContainer'
 import Container from '@components/ui/Container'
