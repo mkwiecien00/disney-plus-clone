@@ -31,6 +31,7 @@ const Details = ({ type }) => {
 		queryFn: ({ signal }) => fetchDetailsFromId({ signal, detailsId: id, resourceType: type }),
 	})
 
+	console.log(data)
 	useScroll()
 
 	let detailsInfo = {}

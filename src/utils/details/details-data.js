@@ -42,7 +42,7 @@ export const detailsData = data => {
 
 		// releaseDate
 		switch (true) {
-			case data.releaseDate !== undefined && data.releaseDate !== null:
+			case data.releaseDate !== undefined && data.releaseDate !== null && data.releaseDate !== '':
 				mainData.releaseDate = data.releaseDate
 				break
 			default:
@@ -51,7 +51,7 @@ export const detailsData = data => {
 
 		// releaseYear
 		switch (true) {
-			case data.releaseDate !== 'No release date provided' && data.releaseDate.trim() !== '':
+			case mainData.releaseDate !== 'No release date provided':
 				mainData.releaseYear = new Date(mainData.releaseDate).getFullYear()
 				break
 			default:
