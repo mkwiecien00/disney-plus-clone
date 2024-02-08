@@ -5,7 +5,7 @@ const AuthenticationInfo = ({ isSignin }) => {
 	return (
 		<InfoText>
 			{isSignin ? 'New to Disney Plus?' : 'Already on Disney Plus?'}
-			<Link to={`${isSignin ? '/disney-plus-clone/auth/signup' : '/disney-plus-clone/auth/signin'}`}>
+			<Link to={`${isSignin ? '/disney-plus-clone/signup' : '/disney-plus-clone/signin'}`}>
 				<span>{isSignin ? 'Sign up now' : 'Sign in'}</span>
 			</Link>
 		</InfoText>

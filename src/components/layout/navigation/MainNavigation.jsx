@@ -19,7 +19,7 @@ const MainNavigation = () => {
 					</Link>
 
 					{user === null && (
-						<Link to='/disney-plus-clone/auth/signin'>
+						<Link to='/disney-plus-clone/signin'>
 							<StyledButton variant='outlined'>GET STARTED</StyledButton>
 						</Link>
 					)}

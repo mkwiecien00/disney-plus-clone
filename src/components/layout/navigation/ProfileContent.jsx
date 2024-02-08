@@ -7,7 +7,7 @@ function ProfileContent({ user, signoutHandler }) {
 		<ProfileIconBox>
 			<UserName sx={{ display: { xs: 'none', md: 'flex' } }}>{user.userName}</UserName>
 			{user.userName && <Avatar alt='Profile Icon'>{user.userName.trim().charAt(0).toUpperCase()}</Avatar>}
-			<LogoutLink to='/disney-plus-clone/auth/signin'>
+			<LogoutLink to='/disney-plus-clone/signin'>
 				<StyledButton variant='outlined' className='signout' onClick={signoutHandler}>
 					<LogoutRoundedIcon />
 				</StyledButton>
