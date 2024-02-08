@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
-import { router } from '@utils/routes/BrowserRouter'
+import { router } from '@utils/routes/router'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@utils/query-client/query-client'
 import { useSelector, useDispatch } from 'react-redux'
