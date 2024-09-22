@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.themoviedb.org/3/'
+export const BASE_URL = 'https://api.themoviedb.org/3'
 export const API_KEY = '35f3fea26d7c6bea37a8777ddbddbed3'
 export const categories = [
 	{
